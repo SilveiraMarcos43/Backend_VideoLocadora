@@ -1,11 +1,12 @@
 # Backend_VideoLocadora
-Projeto de backend das API da Video Locadora
+Backend Video Locadora
 
 Implementação usando os padrões:
-DDD 
-Code first
-Clean Code
-EntityFrameWork
-TDD
-Event Domain
-API service
+	DDD 
+	Code first
+	Clean Code
+	EntityFrameWork
+	FluentValidation
+	TDD
+	Event Domain
+	API service
