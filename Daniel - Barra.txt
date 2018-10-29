@@ -1,0 +1,47 @@
+Aggregate de Locação
+Entidades:
+	Locação
+		cancelarLocação()
+		adicionarMidia()
+		removerMidia()
+		efetivarLocacao()
+			Eventos de domínio
+				LocacaoEfetivadaEvent(IDcliente, QtdCreditos)
+				LocacaoEfetivadaEvent(IDcliente, IDLocacao, DataLocacao, 
+						      Midias(Lista de mídias))
+
+		finalizarLocacao()
+			Assina o evento de domínio
+				LocacaoFinalizadaEvent()
+				
+
+
+Aggregate de Créditos
+Entidades:
+	Crédito
+		adicionarCredito()
+		removerCredito()
+
+	Assina o evento de domínio
+		LocacaoEfetivadaEvent()
+		MultaAplicadaEvent()
+		ConcederCreditoEvent()
+		
+Aggregate de Devolução
+Entidades:
+	Devolução
+		devolverMidia()
+		verificarMidia()
+		aplicarMulta()
+		concederCreditoBonus()
+
+	Assina o evento de domínio
+		LocacaoEfetivadaEvent()
+
+	Serviço de Domínio
+		DevolverMidiaDomainService
+			Eventos de Domínio
+				MultaAplicadaEvent(IDCliente, QtdCreditos)
+				ConcederCreditoEvent(IDCliente, QtdCreditos)
+				LocacaoFinalizadaEvent(IDLocacao)
+		
