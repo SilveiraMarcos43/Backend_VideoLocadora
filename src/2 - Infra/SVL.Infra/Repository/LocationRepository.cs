@@ -14,7 +14,7 @@ namespace SVL.Infra.Repository
 
         }
 
-        public void AddMedia(Media media)
+        public void AddMedia(MediaLoc media)
         {
             throw new System.NotImplementedException();
         }
@@ -30,11 +30,11 @@ namespace SVL.Infra.Repository
         /// <param name="customerId"></param>
         public void CreateLocation(int customerId)
         {
-            this._baseContexto.Add(new LocationMedia(customerId));
+            this._baseContexto.Add(new LocationAggregate(customerId));
             this._baseContexto.SaveChanges();
         }
 
-        public LocationMedia EffectLocationMedia(LocationMedia locationMedia)
+        public LocationAggregate EffectLocationMedia(Domain.Location.LocationAggregate locationMedia)
         {
             throw new System.NotImplementedException();
         }

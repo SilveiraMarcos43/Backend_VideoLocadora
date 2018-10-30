@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SVL.Infra.Migrations
 {
-    public partial class Ini : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace SVL.Infra.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CustomerID = table.Column<int>(nullable: false),
-                    CreditPoints = table.Column<int>(nullable: false)
+                    CreditPoints = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,7 +30,7 @@ namespace SVL.Infra.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     DateBirth = table.Column<DateTime>(nullable: false),
-                    Cpf = table.Column<string>(type: "varchar(11)", nullable: false),
+                    Cpf = table.Column<string>(type: "varchar(14)", nullable: false),
                     Sexo = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -45,7 +45,9 @@ namespace SVL.Infra.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     LocationId = table.Column<int>(nullable: false),
-                    IsFinished = table.Column<bool>(nullable: false)
+                    CustomerId = table.Column<int>(nullable: false),
+                    IsFinished = table.Column<bool>(nullable: false),
+                    DevolutionStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,6 +60,8 @@ namespace SVL.Infra.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Value = table.Column<int>(type: "int", nullable: false),
                     CustomerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -71,11 +75,11 @@ namespace SVL.Infra.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Cep = table.Column<string>(nullable: true),
-                    StreetDescription = table.Column<string>(nullable: true),
-                    District = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
+                    Cep = table.Column<string>(type: "varchar(10)", nullable: false),
+                    StreetDescription = table.Column<string>(type: "varchar(150)", nullable: false),
+                    District = table.Column<string>(type: "varchar(100)", nullable: false),
+                    City = table.Column<string>(type: "varchar(100)", nullable: false),
+                    State = table.Column<string>(type: "varchar(2)", nullable: false),
                     CustomerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -90,44 +94,25 @@ namespace SVL.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Contato",
+                name: "Contact",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(type: "varchar(100)", nullable: false),
                     Email = table.Column<string>(nullable: true),
                     Telefone = table.Column<string>(nullable: true),
                     CustomerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contato", x => x.ID);
+                    table.PrimaryKey("PK_Contact", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Contato_Customer_CustomerId",
+                        name: "FK_Contact_Customer_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customer",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DevolutionMedia",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    DevolutionID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DevolutionMedia", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_DevolutionMedia_Devolution_DevolutionID",
-                        column: x => x.DevolutionID,
-                        principalTable: "Devolution",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,35 +121,54 @@ namespace SVL.Infra.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    LocationMediaID = table.Column<int>(nullable: true)
+                    Title = table.Column<string>(type: "varchar(100)", nullable: false),
+                    IsRelease = table.Column<bool>(nullable: false),
+                    ReleaseDate = table.Column<DateTime>(nullable: false),
+                    Genero = table.Column<int>(nullable: false),
+                    DevolutionID = table.Column<int>(nullable: true),
+                    LocationAggregateID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Media", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Media_Location_LocationMediaID",
-                        column: x => x.LocationMediaID,
+                        name: "FK_Media_Devolution_DevolutionID",
+                        column: x => x.DevolutionID,
+                        principalTable: "Devolution",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Media_Location_LocationAggregateID",
+                        column: x => x.LocationAggregateID,
                         principalTable: "Location",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "mediaLocations",
+                name: "MediaLocation",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    LocationID = table.Column<int>(nullable: false)
+                    LocationID = table.Column<int>(type: "int", nullable: false),
+                    MediaID = table.Column<int>(type: "int", nullable: false),
+                    DeliveryDate = table.Column<DateTime>(nullable: false),
+                    IsRewound = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_mediaLocations", x => x.ID);
+                    table.PrimaryKey("PK_MediaLocation", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_mediaLocations_Location_LocationID",
+                        name: "FK_MediaLocation_Location_LocationID",
                         column: x => x.LocationID,
                         principalTable: "Location",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MediaLocation_Media_MediaID",
+                        column: x => x.MediaID,
+                        principalTable: "Media",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -175,24 +179,29 @@ namespace SVL.Infra.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contato_CustomerId",
-                table: "Contato",
+                name: "IX_Contact_CustomerId",
+                table: "Contact",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DevolutionMedia_DevolutionID",
-                table: "DevolutionMedia",
+                name: "IX_Media_DevolutionID",
+                table: "Media",
                 column: "DevolutionID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Media_LocationMediaID",
+                name: "IX_Media_LocationAggregateID",
                 table: "Media",
-                column: "LocationMediaID");
+                column: "LocationAggregateID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_mediaLocations_LocationID",
-                table: "mediaLocations",
+                name: "IX_MediaLocation_LocationID",
+                table: "MediaLocation",
                 column: "LocationID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MediaLocation_MediaID",
+                table: "MediaLocation",
+                column: "MediaID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -201,22 +210,19 @@ namespace SVL.Infra.Migrations
                 name: "Address");
 
             migrationBuilder.DropTable(
-                name: "Contato");
+                name: "Contact");
 
             migrationBuilder.DropTable(
                 name: "Credit");
 
             migrationBuilder.DropTable(
-                name: "DevolutionMedia");
-
-            migrationBuilder.DropTable(
-                name: "Media");
-
-            migrationBuilder.DropTable(
-                name: "mediaLocations");
+                name: "MediaLocation");
 
             migrationBuilder.DropTable(
                 name: "Customer");
+
+            migrationBuilder.DropTable(
+                name: "Media");
 
             migrationBuilder.DropTable(
                 name: "Devolution");

@@ -1,10 +1,8 @@
-﻿using SVL.Domain.Base;
-using SVL.Domain.Base.Domain.Enum;
+﻿using SVL.Domain.Base.Domain.Enum;
 using System;
 
-namespace SVL.Domain.Location
+namespace SVL.Domain.Base
 {
-
     public class Media : BaseEntity
     {
         private string _title;
@@ -20,17 +18,17 @@ namespace SVL.Domain.Location
         /// <summary>
         /// é Lançamento
         /// </summary>
-        Boolean IsRelease { get => _isRelease; set => _isRelease = value; }
+        public Boolean IsRelease { get => _isRelease; set => _isRelease = value; }
 
         /// <summary>
         /// Data de Lançamento
         /// </summary>
-        DateTime ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
+        public DateTime ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
 
         /// <summary>
         /// Genero do Filme
         /// </summary>
-        Genero Genero { get => _genero; set => _genero = value; }
+        public Genero Genero { get => _genero; set => _genero = value; }
 
 
 

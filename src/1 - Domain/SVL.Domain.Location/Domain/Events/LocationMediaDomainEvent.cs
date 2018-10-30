@@ -8,7 +8,7 @@ namespace SVL.Domain.Location.Domain.Events
         /// Evento disparado quando uma Locação é Efetuada
         /// </summary>
         /// <param name="locationMedia"></param>
-        public void LeaseHold(LocationMedia locationMedia)
+        public void LeaseHold(LocationAggregate locationMedia)
         {
             
         }

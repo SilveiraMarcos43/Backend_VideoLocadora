@@ -9,8 +9,8 @@ using SVL.Infra.Data;
 namespace SVL.Infra.Migrations
 {
     [DbContext(typeof(BaseContexto))]
-    [Migration("20181030132108_Ini")]
-    partial class Ini
+    [Migration("20181030194041_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,17 +24,27 @@ namespace SVL.Infra.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Cep");
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
 
-                    b.Property<string>("City");
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
 
                     b.Property<int>("CustomerId");
 
-                    b.Property<string>("District");
+                    b.Property<string>("District")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
 
-                    b.Property<string>("State");
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("varchar(2)");
 
-                    b.Property<string>("StreetDescription");
+                    b.Property<string>("StreetDescription")
+                        .IsRequired()
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("ID");
 
@@ -43,7 +53,7 @@ namespace SVL.Infra.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("SVL.Domain.Base.Contato", b =>
+            modelBuilder.Entity("SVL.Domain.Base.Contact", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -52,7 +62,9 @@ namespace SVL.Infra.Migrations
 
                     b.Property<string>("Email");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Telefone");
 
@@ -60,7 +72,7 @@ namespace SVL.Infra.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Contato");
+                    b.ToTable("Contact");
                 });
 
             modelBuilder.Entity("SVL.Domain.Base.Customer", b =>
@@ -70,7 +82,7 @@ namespace SVL.Infra.Migrations
 
                     b.Property<string>("Cpf")
                         .IsRequired()
-                        .HasColumnType("varchar(11)");
+                        .HasColumnType("varchar(14)");
 
                     b.Property<DateTime>("DateBirth");
 
@@ -83,10 +95,42 @@ namespace SVL.Infra.Migrations
                     b.ToTable("Customer");
                 });
 
+            modelBuilder.Entity("SVL.Domain.Base.Media", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("DevolutionID");
+
+                    b.Property<int>("Genero");
+
+                    b.Property<bool>("IsRelease");
+
+                    b.Property<int?>("LocationAggregateID");
+
+                    b.Property<DateTime>("ReleaseDate");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("DevolutionID");
+
+                    b.HasIndex("LocationAggregateID");
+
+                    b.ToTable("Media");
+                });
+
             modelBuilder.Entity("SVL.Domain.Devolution.Devolution", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CustomerId");
+
+                    b.Property<int>("DevolutionStatus");
 
                     b.Property<bool>("IsFinished");
 
@@ -97,60 +141,21 @@ namespace SVL.Infra.Migrations
                     b.ToTable("Devolution");
                 });
 
-            modelBuilder.Entity("SVL.Domain.Devolution.DevolutionMedia", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("DevolutionID");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("DevolutionID");
-
-                    b.ToTable("DevolutionMedia");
-                });
-
-            modelBuilder.Entity("SVL.Domain.Location.LocationMedia", b =>
+            modelBuilder.Entity("SVL.Domain.Location.LocationAggregate", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CustomerId");
 
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("Location");
-                });
-
-            modelBuilder.Entity("SVL.Domain.Location.Media", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("LocationMediaID");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("LocationMediaID");
-
-                    b.ToTable("Media");
-                });
-
-            modelBuilder.Entity("SVL.Domain.Location.MediaLocation", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("LocationID");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("LocationID");
-
-                    b.ToTable("mediaLocations");
                 });
 
             modelBuilder.Entity("SVL.Domain.Location.Wallet", b =>
@@ -158,13 +163,38 @@ namespace SVL.Infra.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CreditPoints");
+                    b.Property<int>("CreditPoints")
+                        .HasColumnType("int");
 
                     b.Property<int>("CustomerID");
 
                     b.HasKey("ID");
 
                     b.ToTable("Credit");
+                });
+
+            modelBuilder.Entity("SVL.Infra.Entities.MediaLocation", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DeliveryDate");
+
+                    b.Property<bool>("IsRewound");
+
+                    b.Property<int>("LocationID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MediaID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("LocationID");
+
+                    b.HasIndex("MediaID");
+
+                    b.ToTable("MediaLocation");
                 });
 
             modelBuilder.Entity("SVL.Domain.Base.Address", b =>
@@ -175,33 +205,35 @@ namespace SVL.Infra.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SVL.Domain.Base.Contato", b =>
+            modelBuilder.Entity("SVL.Domain.Base.Contact", b =>
                 {
                     b.HasOne("SVL.Domain.Base.Customer", "Customer")
-                        .WithMany("Contatos")
+                        .WithMany("Contacts")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SVL.Domain.Devolution.DevolutionMedia", b =>
+            modelBuilder.Entity("SVL.Domain.Base.Media", b =>
                 {
                     b.HasOne("SVL.Domain.Devolution.Devolution")
                         .WithMany("Medias")
                         .HasForeignKey("DevolutionID");
-                });
 
-            modelBuilder.Entity("SVL.Domain.Location.Media", b =>
-                {
-                    b.HasOne("SVL.Domain.Location.LocationMedia")
+                    b.HasOne("SVL.Domain.Location.LocationAggregate")
                         .WithMany("medias")
-                        .HasForeignKey("LocationMediaID");
+                        .HasForeignKey("LocationAggregateID");
                 });
 
-            modelBuilder.Entity("SVL.Domain.Location.MediaLocation", b =>
+            modelBuilder.Entity("SVL.Infra.Entities.MediaLocation", b =>
                 {
-                    b.HasOne("SVL.Domain.Location.LocationMedia", "Location")
+                    b.HasOne("SVL.Domain.Location.LocationAggregate", "Location")
                         .WithMany()
                         .HasForeignKey("LocationID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SVL.Domain.Base.Media", "Media")
+                        .WithMany()
+                        .HasForeignKey("MediaID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

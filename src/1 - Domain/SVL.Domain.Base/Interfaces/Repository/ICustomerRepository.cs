@@ -14,7 +14,7 @@ namespace SVL.Base.Domain.Interfaces.Repository
     public interface ICustomerRepository : IRepository<Customer>
     {
         /// <summary>
-        /// Metodo especifico que retorna todos os contatos do Cliente
+        /// Metodo especifico que retorna todos os Contacts do Cliente
         /// </summary>
         /// <returns></returns>
         IEnumerable<Customer> GetContacts(int CustomerId);

@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SVL.Domain.Base
 {
-    public class Contato : BaseEntity
+    public class Contact : BaseEntity
     {
-        public Contato()
+        public Contact()
         {
 
         }
@@ -17,7 +17,7 @@ namespace SVL.Domain.Base
         private Customer _Customer;
 
         /// <summary>
-        /// Nome do Contato
+        /// Nome do Contact
         /// </summary>
         public string Name
         {
@@ -26,12 +26,12 @@ namespace SVL.Domain.Base
         }
 
         /// <summary>
-        /// Email do Contato
+        /// Email do Contact
         /// </summary>
         public string Email { get => _email; set => _email = value; }
 
         /// <summary>
-        /// Telefone do Contato
+        /// Telefone do Contact
         /// </summary>
         public string Telefone
         {
@@ -40,7 +40,7 @@ namespace SVL.Domain.Base
         }
 
         /// <summary>
-        /// Significa que este contato pertence a um Cliente
+        /// Significa que este Contact pertence a um Cliente
         /// </summary>
         [ForeignKey("Customer")]
         public int CustomerId { get => _CustomerId; set => _CustomerId = value; }

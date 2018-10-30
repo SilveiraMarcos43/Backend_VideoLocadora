@@ -12,7 +12,7 @@ namespace SVL.Domain.Location.Domain.Services
 
         }
 
-        public LocationMedia Create(int customerId)
+        public LocationAggregate Create(int customerId)
         {
             //TODO: Regras de Negocios
             return null;

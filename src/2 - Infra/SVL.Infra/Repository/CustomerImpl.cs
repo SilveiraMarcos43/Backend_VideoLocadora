@@ -42,8 +42,8 @@ namespace SVL.Infra.Repository
 
         public IEnumerable<Customer> GetContacts(int CustomerId)
         {
-            //TODO rever pois a lista de contatos deve estar no Repository de Contatos
-            //return _baseContexto.contatos.Where(c => c.CustomerId == CustomerId);
+            //TODO rever pois a lista de Contacts deve estar no Repository de Contacts
+            //return _baseContexto.Contacts.Where(c => c.CustomerId == CustomerId);
             return null;
         }
 

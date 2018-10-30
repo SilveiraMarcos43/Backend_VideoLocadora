@@ -13,7 +13,7 @@ namespace SVL.Domain.Base
         }
 
         private string _cpf;
-        private ICollection<Contato> _contatos;
+        private ICollection<Contact> _Contacts;
         private ICollection<Address> _addresses;
         private SEXO _sexo;
 
@@ -27,9 +27,9 @@ namespace SVL.Domain.Base
         public SEXO Sexo { get => _sexo; set => _sexo = value; }
 
         /// <summary>
-        ///  Significa que o Cliente pode ter uma lista de Contatos
+        ///  Significa que o Cliente pode ter uma lista de Contacts
         /// </summary>
-        public ICollection<Contato> Contatos { get => _contatos; set => _contatos = value; }
+        public ICollection<Contact> Contacts { get => _Contacts; set => _Contacts = value; }
 
         /// <summary>
         /// Cliente pode ter N Endereços

@@ -16,7 +16,7 @@ namespace SVL.Infra.DomainConfig
                 .HasKey(s => s.ID);
 
             builder
-                .HasMany(g => g.Contatos)
+                .HasMany(g => g.Contacts)
                 .WithOne(g => g.Customer)
                 .HasForeignKey(g => g.CustomerId)
                 .HasPrincipalKey(g => g.ID);
@@ -28,7 +28,7 @@ namespace SVL.Infra.DomainConfig
                 .HasPrincipalKey(a => a.ID);
 
             builder
-                .Property(c => c.Cpf).HasColumnType("varchar(11)")
+                .Property(c => c.Cpf).HasColumnType("varchar(14)")
                 .IsRequired();
 
             builder

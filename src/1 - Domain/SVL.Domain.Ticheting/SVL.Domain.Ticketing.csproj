@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SVL.Domain.Devolution\SVL.Domain.Devolution.csproj" />
     <ProjectReference Include="..\SVL.Domain.Location\SVL.Domain.Location.csproj" />
   </ItemGroup>
 

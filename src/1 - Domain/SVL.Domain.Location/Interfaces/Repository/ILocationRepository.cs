@@ -13,7 +13,7 @@ namespace SVL.Domain.Location.Interfaces.Repository
         /// Metodo que efetiva uma locação
         /// </summary>
         /// <returns></returns>
-        LocationMedia EffectLocationMedia(LocationMedia locationMedia);
+        LocationAggregate EffectLocationMedia(LocationAggregate locationMedia);
 
         /// <summary>
         /// Metodo que cancela uma Locação
@@ -25,7 +25,7 @@ namespace SVL.Domain.Location.Interfaces.Repository
         /// Adicionar a media na Locação
         /// </summary>
         /// <param name="media"></param>
-        void AddMedia(Media media);
+        void AddMedia(MediaLoc media);
 
         /// <summary>
         /// Remove a midia da locação
