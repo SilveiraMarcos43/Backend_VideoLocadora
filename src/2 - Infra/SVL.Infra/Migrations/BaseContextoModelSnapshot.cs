@@ -104,7 +104,7 @@ namespace SVL.Infra.Migrations
                     b.Property<bool>("IsRelease");
 
                     b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("DATEONLY");
+                        .HasColumnType("date");
 
                     b.Property<string>("Title")
                         .IsRequired()

@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Classe Aggregate
+/// </summary>
 namespace SVL.Domain.Location
 {
     public class LocationAggregate : BaseEntity

@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="2.1 CrossCuting\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

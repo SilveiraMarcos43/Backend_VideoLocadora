@@ -9,8 +9,8 @@ using SVL.Infra.Data;
 namespace SVL.Infra.Migrations
 {
     [DbContext(typeof(BaseContexto))]
-    [Migration("20181030202722_AjusteDataMidia")]
-    partial class AjusteDataMidia
+    [Migration("20181030205340_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,7 +84,8 @@ namespace SVL.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(14)");
 
-                    b.Property<DateTime>("DateBirth");
+                    b.Property<DateTime>("DateBirth")
+                        .HasColumnType("date");
 
                     b.Property<string>("Name");
 
@@ -105,7 +106,7 @@ namespace SVL.Infra.Migrations
                     b.Property<bool>("IsRelease");
 
                     b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("DATEONLY");
+                        .HasColumnType("date");
 
                     b.Property<string>("Title")
                         .IsRequired()
