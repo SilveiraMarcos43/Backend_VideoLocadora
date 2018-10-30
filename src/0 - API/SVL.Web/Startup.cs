@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,10 +22,17 @@ namespace SVL.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = Configuration["ConnectionStrings:DefaultConnection"];
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
             services.AddDbContext<BaseContexto>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                b => b.MigrationsAssembly("WebApi"))
-            );
+                options.UseMySql(connection));
 
             //TODO: Estudar melhor maneira de implementar a injeção de dependencia dos Serviços 
             services.AddScoped<ILocationService, LocationService>();
