@@ -14,7 +14,6 @@ namespace SVL.Infra.Mapping
         {
             builder
                 .HasKey(s => s.ID);
-
         }
     }
 }

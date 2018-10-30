@@ -17,6 +17,8 @@ namespace SVL.Infra.Mapping
             builder
                 .Property(c => c.Title).HasColumnType("varchar(100)")
                 .IsRequired();
+            builder
+                .Property(c => c.ReleaseDate).HasColumnType("DATEONLY");
 
             builder
                 .Property(c => c.ReleaseDate).HasColumnType("date");
