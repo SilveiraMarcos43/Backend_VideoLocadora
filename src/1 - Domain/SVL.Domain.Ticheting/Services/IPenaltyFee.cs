@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SVL.Ticketing.Domain.Services
 {
-    public interface IFine
+    public interface IPenaltyFee
     {
         void Apply(MediaDevolution media, DateTime date);
     }

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SVL.Infra.Data;
 
 namespace SVL.Infra.Migrations
 {
     [DbContext(typeof(BaseContexto))]
-    partial class BaseContextoModelSnapshot : ModelSnapshot
+    [Migration("20181030202722_AjusteDataMidia")]
+    partial class AjusteDataMidia
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,8 +84,7 @@ namespace SVL.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(14)");
 
-                    b.Property<DateTime>("DateBirth")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DateBirth");
 
                     b.Property<string>("Name");
 

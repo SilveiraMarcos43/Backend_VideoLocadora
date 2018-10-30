@@ -34,6 +34,9 @@ namespace SVL.Infra.DomainConfig
             builder
                 .Property(c => c.Sexo).IsRequired();
 
+            builder
+                .Property(c => c.DateBirth).HasColumnType("date");
+
 
 
         }

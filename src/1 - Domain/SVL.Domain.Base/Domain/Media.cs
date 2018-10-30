@@ -1,5 +1,6 @@
 ﻿using SVL.Domain.Base.Domain.Enum;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SVL.Domain.Base
 {
@@ -23,6 +24,7 @@ namespace SVL.Domain.Base
         /// <summary>
         /// Data de Lançamento
         /// </summary>
+        [Column(TypeName="date")]
         public DateTime ReleaseDate { get => _releaseDate; set => _releaseDate = value; }
 
         /// <summary>
