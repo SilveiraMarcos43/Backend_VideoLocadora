@@ -5,7 +5,7 @@ using System;
 
 namespace SVL.Ticketing.Domain
 {
-    public class Fine: IFine
+    public class PenaltyFee: IPenaltyFee
     {
         public void Apply(MediaDevolution media, DateTime dataDevolucao) { }
     }

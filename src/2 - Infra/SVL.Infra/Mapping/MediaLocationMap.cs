@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SVL.Domain.Location;
 using SVL.Infra.Entities;
 
 namespace SVL.Infra.Mapping
