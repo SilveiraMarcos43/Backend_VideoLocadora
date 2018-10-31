@@ -29,8 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SVL.Domain.Wallet", "src\1 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SVL.Web", "src\0 - API\SVL.Web\SVL.Web.csproj", "{4F62FFAC-6B5B-4E28-AD33-D66DEA428E63}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Services", "4 - Services", "{321C8288-5E86-411F-9736-4E319CEC3691}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Services", "src\4 - Services", "{321C8288-5E86-411F-9736-4E319CEC3691}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SVL.Domain.Services", "src\4 - Services\SVL.Domain.Services\SVL.Domain.Services.csproj", "{91D912DF-50B9-4E73-A294-39A67D168CCD}"
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SVL.Domain.Services", "SVL.Domain.Services\SVL.Domain.Services.csproj", "{91D912DF-50B9-4E73-A294-39A67D168CCD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{842EF1ED-7AF8-4CEA-BE06-4DA81844E8E0}"
