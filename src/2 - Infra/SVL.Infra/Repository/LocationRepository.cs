@@ -4,11 +4,11 @@ using SVL.Infra.Data;
 
 namespace SVL.Infra.Repository
 {
-    public class EFLocationRepository : ILocationRepository
+    public class LocationRepository : ILocationRepository
     {
         private BaseContexto _baseContexto;
 
-        public EFLocationRepository(BaseContexto baseContexto)
+        public LocationRepository(BaseContexto baseContexto)
         {
             this._baseContexto = baseContexto;
 

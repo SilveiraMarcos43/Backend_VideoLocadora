@@ -1,12 +1,11 @@
-﻿using SVL.Base.Domain.Interfaces.Repository;
-using SVL.Domain.Base;
+﻿using SVL.Domain.Base;
 using SVL.Infra.Data;
-using System;
+using SVL.Infra.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
 /// <summary>
-/// Classe que conversa com banco de dados
+/// Classe que conversa c'om banco de dados
 /// Classe Genérica responsável pelas Operações de CRUD
 /// Implementa Interface IRepository
 /// Desta forma nossa aplicação fica desacoplada - podemos implementar outros repository para outros padrões

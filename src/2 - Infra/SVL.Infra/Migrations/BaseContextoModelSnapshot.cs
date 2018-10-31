@@ -140,7 +140,8 @@ namespace SVL.Infra.Migrations
 
                     b.Property<int>("CustomerId");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("date");
 
                     b.Property<int>("Value")
                         .HasColumnType("int");

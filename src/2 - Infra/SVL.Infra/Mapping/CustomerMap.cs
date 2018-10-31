@@ -15,17 +15,17 @@ namespace SVL.Infra.DomainConfig
             builder
                 .HasKey(s => s.ID);
 
-            builder
-                .HasMany(g => g.Contacts)
-                .WithOne(g => g.Customer)
-                .HasForeignKey(g => g.CustomerId)
-                .HasPrincipalKey(g => g.ID);
+            //builder
+            //    //.HasMany(g => g.Contacts)
+            //    .WithOne(g => g.Customer)
+            //    .HasForeignKey(g => g.CustomerId)
+            //    .HasPrincipalKey(g => g.ID);
 
-            builder
-                .HasMany(a => a.Addresses)
-                .WithOne(a => a.Customer)
-                .HasForeignKey(a => a.CustomerId)
-                .HasPrincipalKey(a => a.ID);
+            //builder
+            //    //.HasMany(a => a.Addresses)
+            //    .WithOne(a => a.Customer)
+            //    .HasForeignKey(a => a.CustomerId)
+            //    .HasPrincipalKey(a => a.ID);
 
             builder
                 .Property(c => c.Cpf).HasColumnType("varchar(14)")

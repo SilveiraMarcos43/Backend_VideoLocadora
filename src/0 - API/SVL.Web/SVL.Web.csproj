@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\..\SVL.Domain.Services\SVL.Domain.Services.csproj" />
     <ProjectReference Include="..\..\1 - Domain\SVL.Domain.Location\SVL.Domain.Location.csproj" />
     <ProjectReference Include="..\..\2 - Infra\SVL.Infra\SVL.Infra.csproj" />
+    <ProjectReference Include="..\..\SVL.Application\SVL.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -35,6 +35,7 @@
     <ProjectReference Include="..\..\1 - Domain\SVL.Domain.Location\SVL.Domain.Location.csproj" />
     <ProjectReference Include="..\..\1 - Domain\SVL.Domain.Ticheting\SVL.Domain.Ticketing.csproj" />
     <ProjectReference Include="..\..\1 - Domain\SVL.Domain.Wallet\SVL.Domain.Wallet.csproj" />
+    <ProjectReference Include="..\..\SVL.Application\SVL.Application.csproj" />
   </ItemGroup>
 
 </Project>

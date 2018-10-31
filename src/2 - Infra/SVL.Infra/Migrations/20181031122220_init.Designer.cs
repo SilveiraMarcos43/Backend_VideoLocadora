@@ -9,8 +9,8 @@ using SVL.Infra.Data;
 namespace SVL.Infra.Migrations
 {
     [DbContext(typeof(BaseContexto))]
-    [Migration("20181030205340_initial")]
-    partial class initial
+    [Migration("20181031122220_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -142,7 +142,8 @@ namespace SVL.Infra.Migrations
 
                     b.Property<int>("CustomerId");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("date");
 
                     b.Property<int>("Value")
                         .HasColumnType("int");

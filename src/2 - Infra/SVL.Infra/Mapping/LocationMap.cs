@@ -18,6 +18,9 @@ namespace SVL.Infra.Mapping
                 .Property(c => c.Value).HasColumnType("int")
                 .IsRequired();
 
+            builder
+                .Property(c => c.Date).HasColumnType("date");
+
         }
     }
 }

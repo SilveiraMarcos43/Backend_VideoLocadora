@@ -12,10 +12,10 @@ namespace SVL.Domain.Location.Domain.Services
 
         }
 
-        public LocationAggregate Create(int customerId)
+        public void Create(int customerId)
         {
             //TODO: Regras de Negocios
-            return null;
+             _locationRepository.CreateLocation(customerId);
         }
     }
 }

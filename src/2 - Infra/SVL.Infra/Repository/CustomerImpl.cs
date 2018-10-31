@@ -1,7 +1,6 @@
-﻿using SVL.AplicationCore.Repository;
-using SVL.Base.Domain.Interfaces.Repository;
-using SVL.Domain.Base;
+﻿using SVL.Domain.Base;
 using SVL.Infra.Data;
+using SVL.Infra.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,9 +11,9 @@ using System.Linq;
 /// </summary>
 namespace SVL.Infra.Repository
 {
-    public class EFCustomerRepository : EFRepository<Customer>, ICustomerRepository 
+    public class CustomerRepository : BaseRepository<Customer> 
     {
-        public EFCustomerRepository(BaseContexto baseContexto) : base(baseContexto)
+        public CustomerRepository(BaseContexto baseContexto)
         {
 
         }
@@ -25,10 +24,11 @@ namespace SVL.Infra.Repository
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        //public override Customer Add(Customer entity)
-        //{
-        //    return base.Add(entity);
-        //}
+        public void Add(Customer entity)
+        {
+
+            
+        }
 
 
         /// <summary>
@@ -38,7 +38,8 @@ namespace SVL.Infra.Repository
         /// <returns></returns>
         public IEnumerable<Customer> GetAdress(int CustomerId)
         {
-            return _baseContexto.customers.Where(p => p.ID == CustomerId);
+            return null;
+            //return _baseContexto.customers.Where(p => p.ID == CustomerId);
 
         }
 
