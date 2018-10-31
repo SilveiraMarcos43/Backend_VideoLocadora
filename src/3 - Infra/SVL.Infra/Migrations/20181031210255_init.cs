@@ -9,6 +9,23 @@ namespace SVL.Infra.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Address",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Cep = table.Column<string>(type: "varchar(10)", nullable: false),
+                    StreetDescription = table.Column<string>(type: "varchar(150)", nullable: false),
+                    District = table.Column<string>(type: "varchar(100)", nullable: false),
+                    City = table.Column<string>(type: "varchar(100)", nullable: false),
+                    State = table.Column<string>(type: "varchar(2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Address", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Credit",
                 columns: table => new
                 {
@@ -31,7 +48,8 @@ namespace SVL.Infra.Migrations
                     Name = table.Column<string>(nullable: true),
                     DateBirth = table.Column<DateTime>(type: "date", nullable: false),
                     Cpf = table.Column<string>(type: "varchar(14)", nullable: false),
-                    Sexo = table.Column<int>(nullable: false)
+                    Sexo = table.Column<int>(nullable: false),
+                    AddressId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,30 +104,6 @@ namespace SVL.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Address",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Cep = table.Column<string>(type: "varchar(10)", nullable: false),
-                    StreetDescription = table.Column<string>(type: "varchar(150)", nullable: false),
-                    District = table.Column<string>(type: "varchar(100)", nullable: false),
-                    City = table.Column<string>(type: "varchar(100)", nullable: false),
-                    State = table.Column<string>(type: "varchar(2)", nullable: false),
-                    CustomerId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Address", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Address_Customer_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customer",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Contact",
                 columns: table => new
                 {
@@ -158,11 +152,6 @@ namespace SVL.Infra.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Address_CustomerId",
-                table: "Address",
-                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contact_CustomerId",

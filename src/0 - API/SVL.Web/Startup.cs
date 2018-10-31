@@ -11,6 +11,7 @@ using SVL.Domain.Location.Interfaces.Repository;
 using SVL.Infra.Data;
 using SVL.Infra.Interfaces;
 using SVL.Infra.Repository;
+using SVL.Infra.UnitOfWork;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace SVL.Web
@@ -44,6 +45,9 @@ namespace SVL.Web
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IRepository<Customer>, BaseRepository<Customer>>();
+            services.AddScoped<IRepository<Address>, BaseRepository<Address>>();
+            services.AddScoped<IRepository<SVL.Domain.Base.Contact>, BaseRepository<SVL.Domain.Base.Contact>>();
+            services.AddScoped<ICustomerUOW, CustomerUOW>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

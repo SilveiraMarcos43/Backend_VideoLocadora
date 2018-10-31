@@ -30,8 +30,6 @@ namespace SVL.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<int>("CustomerId");
-
                     b.Property<string>("District")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
@@ -45,8 +43,6 @@ namespace SVL.Infra.Migrations
                         .HasColumnType("varchar(150)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Address");
                 });
@@ -77,6 +73,8 @@ namespace SVL.Infra.Migrations
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AddressId");
 
                     b.Property<string>("Cpf")
                         .IsRequired()
@@ -188,14 +186,6 @@ namespace SVL.Infra.Migrations
                     b.HasIndex("MediaID");
 
                     b.ToTable("MediaLocation");
-                });
-
-            modelBuilder.Entity("SVL.Domain.Base.Address", b =>
-                {
-                    b.HasOne("SVL.Domain.Base.Customer", "Customer")
-                        .WithMany("Addresses")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SVL.Domain.Base.Contact", b =>

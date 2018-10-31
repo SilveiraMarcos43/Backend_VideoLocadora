@@ -1,6 +1,7 @@
 using SVL.Domain.Base.Domain.Enum;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SVL.Domain.Base
 {
@@ -13,8 +14,8 @@ namespace SVL.Domain.Base
         }
 
         private string _cpf;
-        //private ICollection<Contact> _Contacts;
-        //private ICollection<Address> _addresses;
+        private ICollection<Contact> _Contacts;
+        private int _addressId;
         private EnumGender _gender;
 
         /// <summary>
@@ -29,12 +30,9 @@ namespace SVL.Domain.Base
         /// <summary>
         ///  Significa que o Cliente pode ter uma lista de Contacts
         /// </summary>
-        //public ICollection<Contact> Contacts { get => _Contacts; set => _Contacts = value; }
+        public ICollection<Contact> Contacts { get => _Contacts; set => _Contacts = value; }
 
-        ///// <summary>
-        ///// Cliente pode ter N Endereços
-        ///// </summary>
-        //public ICollection<Address> Addresses { get => _addresses; set => _addresses = value; }
-
+        [ForeignKey("addressId")]
+        public int AddressId { get => _addressId; set => _addressId = value; }
     }
 }

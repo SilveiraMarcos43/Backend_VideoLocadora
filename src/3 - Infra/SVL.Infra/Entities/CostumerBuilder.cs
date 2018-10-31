@@ -9,14 +9,6 @@ namespace SVL.Infra.Entities
 {
     public class CostumerBuilder
     {
-        private IRepository<CustomerDto> _iRepository;
-
-        public CostumerBuilder()
-        {
-            
-            
-        }
-
         public Customer Build(CustomerDto customerDto)
         {
             Customer customer = new Customer();
@@ -24,8 +16,8 @@ namespace SVL.Infra.Entities
             customer.Cpf = customerDto.Cpf;
             customer.Sexo = customerDto.Gender;
             customer.DateBirth = customerDto.DateBirth;
-            //customer.Addresses = new List<Address>();
-            //customer.Contacts = new List<Contact>();
+            //customer.Address = customerDto.AddressDto;
+            customer.Contacts = new List<Contact>();
             return customer;
         }
     }

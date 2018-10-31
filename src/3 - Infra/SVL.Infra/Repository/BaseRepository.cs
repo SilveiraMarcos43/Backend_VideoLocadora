@@ -14,34 +14,43 @@ namespace SVL.Infra.Repository
 {
     public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private BaseContexto context;
+        private BaseContexto _context;
+
+        public BaseRepository(BaseContexto baseContexto)
+        {
+            this._context = baseContexto;
+
+        }
+
+        public BaseRepository()
+        {
+        }
 
         public void Insert(T obj)
         {
-            context.Set<T>().Add(obj);
-            context.SaveChanges();
+            _context.Set<T>().Add(obj);
         }
 
         public void Update(T obj)
         {
-            context.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
+            _context.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            context.Set<T>().Remove(Select(id));
-            context.SaveChanges();
+            _context.Set<T>().Remove(Select(id));
+            _context.SaveChanges();
         }
 
         public IList<T> Select()
         {
-            return context.Set<T>().ToList();
+            return _context.Set<T>().ToList();
         }
 
         public T Select(int id)
         {
-            return context.Set<T>().Find(id);
+            return _context.Set<T>().Find(id);
         }
     }
 }

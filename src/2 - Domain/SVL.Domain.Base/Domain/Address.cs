@@ -13,8 +13,6 @@ namespace SVL.Domain.Base
     /// </summary>
     public class Address : BaseEntity
     {
-        private int _CustomerId;
-        private Customer _Customer;
         private string _cep;
         private string _streetDescription;
         private string _city;
@@ -41,12 +39,6 @@ namespace SVL.Domain.Base
         /// Estado
         /// </summary>
         public string State { get => _state; set => _state = value; }
-        /// <summary>
-        /// Significa que este Endereço pertence a um Cliente
-        /// </summary>
-        [ForeignKey("Customer")]
-        public int CustomerId { get => _CustomerId; set => _CustomerId = value; }
-        public Customer Customer { get => _Customer; set => _Customer = value; }
 
     }
 }

@@ -8,6 +8,7 @@ using SVL.Domain.Base;
 using SVL.Domain.Base.Interfaces.Services;
 using SVL.Infra.Entities;
 using SVL.Infra.Interfaces;
+using SVL.Infra.UnitOfWork;
 
 namespace SVL.Web.Controllers
 {
@@ -15,18 +16,35 @@ namespace SVL.Web.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
+        private readonly ICustomerUOW _uow;
 
-        private IRepository<Customer> _repository;
-        public CustomerController(IRepository<Customer> repository)
+        public CustomerController(ICustomerUOW uow)
         {
-            this._repository = repository;
+            _uow = uow;
         }
         [HttpPost]
         public void Create([FromBody] CustomerDto customerDto)
         {
+            Address address = new AddressBuilder().Build(customerDto.AddressDto);
             Customer customer = new CostumerBuilder().Build(customerDto);
-            this._repository.Insert(customer);
+            List<Contact> contacts = new ContactBuilder().Build(customerDto.Contacts);
+
+            //Endereços
+            _uow.AddressRepository.Insert(address);
             
+            //Clientes
+            customer.AddressId = address.ID;
+            _uow.CustomerRepository.Insert(customer);
+
+            //Contatos
+            foreach (var contact in contacts)
+            {
+                contact.CustomerId = customer.ID;
+                _uow.ContactRepository.Insert(contact);
+            }
+
+            _uow.Commit();
+
         }
     }
 }
