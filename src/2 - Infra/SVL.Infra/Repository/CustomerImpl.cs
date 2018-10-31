@@ -25,10 +25,12 @@ namespace SVL.Infra.Repository
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public override Customer Add(Customer entity)
-        {
-            return base.Add(entity);
-        }
+        //public override Customer Add(Customer entity)
+        //{
+        //    return base.Add(entity);
+        //}
+
+
         /// <summary>
         /// Implementando Classe especializada de Cliente
         /// </summary>

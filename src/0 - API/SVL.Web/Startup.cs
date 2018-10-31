@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SVL.Domain.Location.Domain.Services;
 using SVL.Infra.Data;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace SVL.Web
 {
@@ -24,6 +25,7 @@ namespace SVL.Web
         {
             var connection = Configuration["ConnectionStrings:DefaultConnection"];
 
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -38,6 +40,11 @@ namespace SVL.Web
             services.AddScoped<ILocationService, LocationService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "APIs VIDEO LOCADORA", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +60,17 @@ namespace SVL.Web
             }
 
             app.UseHttpsRedirection();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "APIs Video Locadora V1");
+            });
+
             app.UseMvc();
         }
     }

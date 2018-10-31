@@ -7,6 +7,7 @@ Implementação usando os padrões:
 	Clean Code
 	EntityFrameWork
 	FluentValidation
+	Migration
 	TDD
 	Event Domain
 	API service

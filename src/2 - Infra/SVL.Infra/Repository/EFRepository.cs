@@ -27,48 +27,29 @@ namespace SVL.AplicationCore.Repository
             _baseContexto = baseContexto;
         }
 
-        /// <summary>
-        /// Sobreescrita de metodo, usando o virtual posso alterar o comportamento deste metodo
-        /// sobreescrevendo ele
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public virtual T Add(T entity)
+        public void Delete(int id)
         {
-            _baseContexto.Set<T>().Add(entity);
-            
-            // Poderia implementar aqui o Padrão UnitOfWork
-            _baseContexto.SaveChanges();
-            return entity;
+            throw new NotImplementedException();
         }
 
-        public void Delete(T entity)
+        public void Insert(T obj)
         {
-            _baseContexto.Set<T>().Remove(entity);
-            _baseContexto.SaveChanges();
-            
+            throw new NotImplementedException();
         }
 
-        public virtual IEnumerable<T> GetAll()
+        public IList<T> Select()
         {
-            return _baseContexto.Set<T>().AsEnumerable();
+            throw new NotImplementedException();
         }
 
-        public virtual IEnumerable<T> GetBy(Expression<Func<T, bool>> predicado)
+        public T Select(int id)
         {
-            return _baseContexto.Set<T>().Where(predicado).AsEnumerable();
+            throw new NotImplementedException();
         }
 
-        public virtual T GetId(int id)
+        public void Update(T obj)
         {
-            return _baseContexto.Set<T>().Find(id);
-        }
-
-        public virtual void Update(T entity)
-        {
-            _baseContexto.Entry(entity).State = EntityState.Modified;
-            _baseContexto.SaveChanges();
-
+            throw new NotImplementedException();
         }
     }
 

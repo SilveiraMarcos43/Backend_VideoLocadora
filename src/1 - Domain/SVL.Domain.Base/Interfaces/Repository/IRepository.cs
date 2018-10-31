@@ -12,41 +12,35 @@ namespace SVL.Base.Domain.Interfaces.Repository
         /// <summary>
         /// Adiciona os registros da Entity passada como parâmetro
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="obj"></param>
         /// <returns></returns>
-        T Add(T entity);
+        /// 
+        void Insert(T obj);
 
         /// <summary>
         /// Altera as informações da Entity passada como parâmetro
         /// </summary>
-        /// <param name="entity"></param>
-        void Update(T entity);
+        /// <param name="obj"></param>
+        void Update(T obj);
 
         /// <summary>
         /// Retorna todas as informações da Entity
         /// </summary>
         /// <returns></returns>
-        IEnumerable<T> GetAll();
+        IList<T> Select();
 
         /// <summary>
         /// Retorna toda as informações da Entity filtrando pelo ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        T GetId(int id);
-
-        /// <summary>
-        /// Retorna todas as informações da Entity conforme filtro passado
-        /// </summary>
-        /// <param name="predicado"></param>
-        /// <returns></returns>
-        IEnumerable<T> GetBy(Expression<Func<T, bool>> predicado);
+        T Select(int id);
 
         /// <summary>
         /// Exclui as informações da Entity passada como parâmetro
         /// </summary>
-        /// <param name="entity"></param>
-        void Delete(T entity);
+        /// <param name="id"></param>
+        void Delete(int id);
 
     }
 }
