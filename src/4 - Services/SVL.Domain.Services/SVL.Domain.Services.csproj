@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\2 - Infra\SVL.Infra\SVL.Infra.csproj" />
-    <ProjectReference Include="..\src\SVL.Application\SVL.Application.csproj" />
+    <ProjectReference Include="..\..\1 - Application\SVL.Application\SVL.Application.csproj" />
+    <ProjectReference Include="..\..\3 - Infra\SVL.Infra\SVL.Infra.csproj" />
   </ItemGroup>
 
 </Project>
