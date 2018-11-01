@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="2.1 CrossCuting\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\1 - Application\SVL.Application\SVL.Application.csproj" />
     <ProjectReference Include="..\..\2 - Domain\SVL.Domain.Base\SVL.Domain.Base.csproj" />
     <ProjectReference Include="..\..\2 - Domain\SVL.Domain.Devolution\SVL.Domain.Devolution.csproj" />

@@ -11,7 +11,6 @@ namespace SVL.Infra.Repository
         public LocationRepository(BaseContexto baseContexto)
         {
             this._baseContexto = baseContexto;
-
         }        
 
         public void CancelLocationMedia(int LocationMediaId)

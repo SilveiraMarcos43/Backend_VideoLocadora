@@ -25,7 +25,7 @@ namespace SVL.Domain.Location.Domain.Services
 
         public LocationAggregate EffectLocationMedia(LocationAggregate locationMedia)
         {
-            throw new System.NotImplementedException();
+            ConfigurationRegistry.RegistryConfigurado = new Registry();
         }
     }
 }

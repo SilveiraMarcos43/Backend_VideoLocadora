@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using SVL.Application.Dto;
 using SVL.Domain.Location.Domain.Services;
+using SVL.Domain.Location.Interfaces.Services;
+using SVL.Infra.Entities;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,18 +13,20 @@ namespace SVL.Web.Controllers
     [ApiController]
     public class LocationController : ControllerBase
     {
-        private readonly ILocationService ILocationService;
+        private readonly ILocationService _locationService;
+        private readonly IMediaLocationService _locationMediaService;
 
-        public LocationController(ILocationService ILocationService)
+        public LocationController(ILocationService ILocationService, IMediaLocationService ILocationMediaService)
         {
-            this.ILocationService = ILocationService;
+            _locationService = ILocationService;
+            _locationMediaService = ILocationMediaService;
         }
 
         [HttpPost]
         [Route("{customerId}")]
         public void Create([FromRoute] int customerId)
         {
-            this.ILocationService.Create(customerId);
+            this._locationService.Create(customerId);
         }
 
         [HttpGet]
@@ -29,5 +34,12 @@ namespace SVL.Web.Controllers
         {
             return new string[] { "value1", "value2" };
         }
-    }
+
+        [HttpPost]
+        public void AddMedia([FromBody] MediaLocationDto mediaLocationDto)
+        {
+            var mediaLocation = new MediaLocationBuilder().Build(mediaLocationDto);
+            _locationMediaService.AddMedia(mediaLocation);
+        }
+    } 
 }
