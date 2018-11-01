@@ -24,13 +24,19 @@ namespace SVL.Infra.Repository
 
         public BaseRepository()
         {
+
+        }
+
+        public void InsertUnitOfWork(T obj)
+        {
+            _context.Set<T>().Add(obj);
         }
 
         public void Insert(T obj)
         {
             _context.Set<T>().Add(obj);
+            _context.SaveChanges();
         }
-
         public void Update(T obj)
         {
             _context.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;

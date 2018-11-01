@@ -1,4 +1,5 @@
 ﻿using SVL.Domain.Base;
+using SVL.Domain.Location.Domain.Enum;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +13,7 @@ namespace SVL.Domain.Location
         private DateTime _date;
         private float _value;
         private int _customerId;
+        private LocationStatus _locationStatus;
 
         public LocationAggregate(int customerId)
         {
@@ -32,5 +34,10 @@ namespace SVL.Domain.Location
         /// Cliente da Locação
         /// </summary>
         public int CustomerId { get => _customerId; set => _customerId = value; }
+
+        /// <summary>
+        /// Situação da locação
+        /// </summary>
+        public LocationStatus LocationStatus { get => _locationStatus; set => _locationStatus = value; }
     }
 }

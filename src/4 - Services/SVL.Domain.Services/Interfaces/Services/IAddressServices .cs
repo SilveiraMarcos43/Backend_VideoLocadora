@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SVL.Domain.Services.Interfaces.Services
 {
-    public interface IMediaServices<T> where T : BaseEntity
+    public interface IAddressServices<T> where T : BaseEntity
     {
         T Post<V>(T obj) where V : AbstractValidator<T>;
 

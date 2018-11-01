@@ -15,7 +15,17 @@ namespace SVL.Domain.Location.Domain.Services
         public void Create(int customerId)
         {
             //TODO: Regras de Negocios
-             _locationRepository.CreateLocation(customerId);
+            _locationRepository.CreateLocation(customerId);
+        }
+
+        public void CancelLocationMedia(int LocationMediaId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public LocationAggregate EffectLocationMedia(LocationAggregate locationMedia)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

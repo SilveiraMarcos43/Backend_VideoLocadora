@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SVL.Application;
 using SVL.Base.Domain.Validators;
 using SVL.Domain.Base;
-using SVL.Domain.Base.Services;
+using SVL.Domain.Services.Interfaces.Services;
+using SVL.Infra.Entities;
 
 namespace SVL.Web.Controllers
 {
@@ -14,7 +12,12 @@ namespace SVL.Web.Controllers
     [ApiController]
     public class MediaController : ControllerBase
     {
-        private BaseService<Media> service = new BaseService<Media>();
+        private IMediaServices<Media> _mediaServices;
+
+        public MediaController(IMediaServices<Media> mediaServices)
+        {
+            this._mediaServices = mediaServices;
+        }
 
         // GET: api/Media
         [HttpGet]
@@ -22,7 +25,7 @@ namespace SVL.Web.Controllers
         {
             try
             {
-                return new ObjectResult(service.Get());
+                return new ObjectResult(_mediaServices.Get());
             }
             catch (Exception ex)
             {
@@ -36,7 +39,7 @@ namespace SVL.Web.Controllers
         {
             try
             {
-                return new ObjectResult(service.Get(id));
+                return new ObjectResult(_mediaServices.Get(id));
             }
             catch (ArgumentException ex)
             {
@@ -47,15 +50,16 @@ namespace SVL.Web.Controllers
                 return BadRequest(ex);
             }
         }
-    
+
 
         // POST: api/Default
         [HttpPost]
-        public IActionResult Post([FromBody] Media media)
+        public IActionResult Post([FromBody] MediaDto mediaDto)
         {
             try
             {
-                service.Post<MediaValidator>(media);
+                Media media = new MediaBuilder().Build(mediaDto);
+                _mediaServices.Post<MediaValidator>(media);
 
                 return new ObjectResult(media.ID);
             }
@@ -75,7 +79,7 @@ namespace SVL.Web.Controllers
         {
             try
             {
-                service.Put<MediaValidator>(media);
+                _mediaServices.Put<MediaValidator>(media);
 
                 return new ObjectResult(media);
             }
@@ -88,7 +92,7 @@ namespace SVL.Web.Controllers
                 return BadRequest(ex);
             }
         }
-    
+
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
@@ -96,7 +100,7 @@ namespace SVL.Web.Controllers
         {
             try
             {
-                service.Delete(id);
+                _mediaServices.Delete(id);
 
                 return new NoContentResult();
             }
