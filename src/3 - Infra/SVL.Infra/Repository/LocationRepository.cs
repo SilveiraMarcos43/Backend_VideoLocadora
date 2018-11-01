@@ -12,12 +12,7 @@ namespace SVL.Infra.Repository
         {
             this._baseContexto = baseContexto;
 
-        }
-
-        public void AddMedia(MediaLoc media)
-        {
-            throw new System.NotImplementedException();
-        }
+        }        
 
         public void CancelLocationMedia(int LocationMediaId)
         {
@@ -39,9 +34,6 @@ namespace SVL.Infra.Repository
             throw new System.NotImplementedException();
         }
 
-        public void RemoveMedia(int mediaId)
-        {
-            throw new System.NotImplementedException();
-        }
+
     }
 }

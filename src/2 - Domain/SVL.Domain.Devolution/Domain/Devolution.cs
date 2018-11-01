@@ -1,7 +1,6 @@
 ﻿using SVL.Domain.Base;
-using SVL.Domain.Devolution.Domain;
+using SVL.Domain.Devolution.Domain.Enum;
 using System;
-using System.Collections.Generic;
 
 namespace SVL.Domain.Devolution
 {
