@@ -9,8 +9,8 @@ using SVL.Infra.Data;
 namespace SVL.Infra.Migrations
 {
     [DbContext(typeof(BaseContexto))]
-    [Migration("20181031210255_init")]
-    partial class init
+    [Migration("20181101200150_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace SVL.Infra.Migrations
 
             modelBuilder.Entity("SVL.Domain.Base.Address", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Cep")
@@ -51,10 +51,10 @@ namespace SVL.Infra.Migrations
 
             modelBuilder.Entity("SVL.Domain.Base.Contact", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CustomerId");
+                    b.Property<Guid>("CustomerId");
 
                     b.Property<string>("Email");
 
@@ -73,10 +73,10 @@ namespace SVL.Infra.Migrations
 
             modelBuilder.Entity("SVL.Domain.Base.Customer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AddressId");
+                    b.Property<Guid>("AddressId");
 
                     b.Property<string>("Cpf")
                         .IsRequired()
@@ -96,7 +96,7 @@ namespace SVL.Infra.Migrations
 
             modelBuilder.Entity("SVL.Domain.Base.Media", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Genero");
@@ -117,7 +117,7 @@ namespace SVL.Infra.Migrations
 
             modelBuilder.Entity("SVL.Domain.Devolution.Devolution", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CustomerId");
@@ -135,13 +135,15 @@ namespace SVL.Infra.Migrations
 
             modelBuilder.Entity("SVL.Domain.Location.LocationAggregate", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CustomerId");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
+
+                    b.Property<int>("LocationStatus");
 
                     b.Property<int>("Value")
                         .HasColumnType("int");
@@ -153,7 +155,7 @@ namespace SVL.Infra.Migrations
 
             modelBuilder.Entity("SVL.Domain.Location.Wallet", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CreditPoints")
@@ -168,7 +170,7 @@ namespace SVL.Infra.Migrations
 
             modelBuilder.Entity("SVL.Infra.Entities.MediaLocation", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DeliveryDate");
@@ -178,14 +180,18 @@ namespace SVL.Infra.Migrations
                     b.Property<int>("LocationID")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("LocationID1");
+
                     b.Property<int>("MediaID")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("MediaID1");
+
                     b.HasKey("ID");
 
-                    b.HasIndex("LocationID");
+                    b.HasIndex("LocationID1");
 
-                    b.HasIndex("MediaID");
+                    b.HasIndex("MediaID1");
 
                     b.ToTable("MediaLocation");
                 });
@@ -202,13 +208,11 @@ namespace SVL.Infra.Migrations
                 {
                     b.HasOne("SVL.Domain.Location.LocationAggregate", "Location")
                         .WithMany()
-                        .HasForeignKey("LocationID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("LocationID1");
 
                     b.HasOne("SVL.Domain.Base.Media", "Media")
                         .WithMany()
-                        .HasForeignKey("MediaID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("MediaID1");
                 });
 #pragma warning restore 612, 618
         }

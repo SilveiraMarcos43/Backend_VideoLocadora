@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SVL.Infra.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +11,7 @@ namespace SVL.Infra.Migrations
                 name: "Address",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<Guid>(nullable: false),
                     Cep = table.Column<string>(type: "varchar(10)", nullable: false),
                     StreetDescription = table.Column<string>(type: "varchar(150)", nullable: false),
                     District = table.Column<string>(type: "varchar(100)", nullable: false),
@@ -29,8 +27,7 @@ namespace SVL.Infra.Migrations
                 name: "Credit",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<Guid>(nullable: false),
                     CustomerID = table.Column<int>(nullable: false),
                     CreditPoints = table.Column<int>(type: "int", nullable: false)
                 },
@@ -43,13 +40,12 @@ namespace SVL.Infra.Migrations
                 name: "Customer",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     DateBirth = table.Column<DateTime>(type: "date", nullable: false),
                     Cpf = table.Column<string>(type: "varchar(14)", nullable: false),
                     Sexo = table.Column<int>(nullable: false),
-                    AddressId = table.Column<int>(nullable: false)
+                    AddressId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,8 +56,7 @@ namespace SVL.Infra.Migrations
                 name: "Devolution",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<Guid>(nullable: false),
                     LocationId = table.Column<int>(nullable: false),
                     CustomerId = table.Column<int>(nullable: false),
                     IsFinished = table.Column<bool>(nullable: false),
@@ -76,11 +71,11 @@ namespace SVL.Infra.Migrations
                 name: "Location",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<Guid>(nullable: false),
                     Date = table.Column<DateTime>(type: "date", nullable: false),
                     Value = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<int>(nullable: false)
+                    CustomerId = table.Column<int>(nullable: false),
+                    LocationStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -91,8 +86,7 @@ namespace SVL.Infra.Migrations
                 name: "Media",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<Guid>(nullable: false),
                     Title = table.Column<string>(type: "varchar(100)", nullable: false),
                     IsRelease = table.Column<bool>(nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "date", nullable: false),
@@ -107,12 +101,11 @@ namespace SVL.Infra.Migrations
                 name: "Contact",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(type: "varchar(100)", nullable: false),
                     Email = table.Column<string>(nullable: true),
                     Telefone = table.Column<string>(nullable: true),
-                    CustomerId = table.Column<int>(nullable: false)
+                    CustomerId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -129,10 +122,11 @@ namespace SVL.Infra.Migrations
                 name: "MediaLocation",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<Guid>(nullable: false),
                     LocationID = table.Column<int>(type: "int", nullable: false),
+                    LocationID1 = table.Column<Guid>(nullable: true),
                     MediaID = table.Column<int>(type: "int", nullable: false),
+                    MediaID1 = table.Column<Guid>(nullable: true),
                     DeliveryDate = table.Column<DateTime>(nullable: false),
                     IsRewound = table.Column<bool>(nullable: false)
                 },
@@ -140,17 +134,17 @@ namespace SVL.Infra.Migrations
                 {
                     table.PrimaryKey("PK_MediaLocation", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_MediaLocation_Location_LocationID",
-                        column: x => x.LocationID,
+                        name: "FK_MediaLocation_Location_LocationID1",
+                        column: x => x.LocationID1,
                         principalTable: "Location",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_MediaLocation_Media_MediaID",
-                        column: x => x.MediaID,
+                        name: "FK_MediaLocation_Media_MediaID1",
+                        column: x => x.MediaID1,
                         principalTable: "Media",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -159,14 +153,14 @@ namespace SVL.Infra.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MediaLocation_LocationID",
+                name: "IX_MediaLocation_LocationID1",
                 table: "MediaLocation",
-                column: "LocationID");
+                column: "LocationID1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MediaLocation_MediaID",
+                name: "IX_MediaLocation_MediaID1",
                 table: "MediaLocation",
-                column: "MediaID");
+                column: "MediaID1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
