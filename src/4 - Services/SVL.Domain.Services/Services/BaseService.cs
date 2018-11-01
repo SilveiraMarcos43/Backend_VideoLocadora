@@ -1,21 +1,25 @@
 ﻿using FluentValidation;
-using SVL.Domain.Base.Interfaces.Services;
-using SVL.Infra.Repository;
+using SVL.Domain.Services.Interfaces.Services;
+using SVL.Infra.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SVL.Domain.Base.Services
 {
     public class BaseService<T> : IMediaServices<T> where T : BaseEntity
     {
-        private BaseRepository<T> repository = new BaseRepository<T>();
+        private IRepository<T> _repository;
+
+        public BaseService(IRepository<T> repository)
+        {
+            this._repository = repository;
+        }
 
         public T Post<V>(T obj) where V : AbstractValidator<T>
         {
             Validate(obj, Activator.CreateInstance<V>());
 
-            repository.Insert(obj);
+            _repository.Insert(obj);
             return obj;
         }
 
@@ -23,7 +27,7 @@ namespace SVL.Domain.Base.Services
         {
             Validate(obj, Activator.CreateInstance<V>());
 
-            repository.Update(obj);
+            _repository.Update(obj);
             return obj;
         }
 
@@ -32,17 +36,17 @@ namespace SVL.Domain.Base.Services
             if (id == 0)
                 throw new ArgumentException("The id can't be zero.");
 
-            repository.Delete(id);
+            _repository.Delete(id);
         }
 
-        public IList<T> Get() => repository.Select();
+        public IList<T> Get() => _repository.Select();
 
         public T Get(int id)
         {
             if (id == 0)
                 throw new ArgumentException("The id can't be zero.");
 
-            return repository.Select(id);
+            return _repository.Select(id);
         }
 
         private void Validate(T obj, AbstractValidator<T> validator)

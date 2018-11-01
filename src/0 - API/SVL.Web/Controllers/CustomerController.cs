@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SVL.Application;
 using SVL.Domain.Base;
-using SVL.Domain.Base.Interfaces.Services;
+using SVL.Domain.Services.Interfaces.Services;
 using SVL.Infra.Entities;
 using SVL.Infra.Interfaces;
 using SVL.Infra.UnitOfWork;

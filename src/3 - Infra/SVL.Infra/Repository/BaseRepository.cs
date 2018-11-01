@@ -24,6 +24,7 @@ namespace SVL.Infra.Repository
 
         public BaseRepository()
         {
+
         }
 
         public void Insert(T obj)

@@ -2,7 +2,7 @@
 using SVL.Domain.Base;
 using System.Collections.Generic;
 
-namespace SVL.Domain.Base.Interfaces.Services
+namespace SVL.Domain.Services.Interfaces.Services
 {
     public interface IMediaServices<T> where T : BaseEntity
     {

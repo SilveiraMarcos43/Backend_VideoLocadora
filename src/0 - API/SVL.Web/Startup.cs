@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SVL.Domain.Base;
+using SVL.Domain.Services.Interfaces.Services;
 using SVL.Domain.Location.Domain.Services;
 using SVL.Domain.Location.Interfaces.Repository;
 using SVL.Infra.Data;
@@ -48,6 +49,8 @@ namespace SVL.Web
             services.AddScoped<IRepository<Address>, BaseRepository<Address>>();
             services.AddScoped<IRepository<SVL.Domain.Base.Contact>, BaseRepository<SVL.Domain.Base.Contact>>();
             services.AddScoped<ICustomerUOW, CustomerUOW>();
+            services.AddScoped<IMediaServices<Media>>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

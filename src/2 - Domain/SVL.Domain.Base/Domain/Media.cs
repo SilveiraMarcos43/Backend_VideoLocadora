@@ -33,8 +33,5 @@ namespace SVL.Domain.Base
         public Genero Genero { get => _genero; set => _genero = value; }
 
 
-
-
-
     }
 }
