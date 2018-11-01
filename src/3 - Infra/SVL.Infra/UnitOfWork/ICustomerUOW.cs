@@ -8,7 +8,6 @@ namespace SVL.Infra.UnitOfWork
         IRepository<Address> AddressRepository { get; }
         IRepository<Customer> CustomerRepository { get; }
         IRepository<Contact> ContactRepository { get; }
-
         void Commit();
     }
 }

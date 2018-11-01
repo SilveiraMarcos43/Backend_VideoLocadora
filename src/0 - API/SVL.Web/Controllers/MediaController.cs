@@ -1,8 +1,10 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using SVL.Application;
 using SVL.Base.Domain.Validators;
 using SVL.Domain.Base;
 using SVL.Domain.Services.Interfaces.Services;
+using SVL.Infra.Entities;
 
 namespace SVL.Web.Controllers
 {
@@ -48,14 +50,15 @@ namespace SVL.Web.Controllers
                 return BadRequest(ex);
             }
         }
-    
+
 
         // POST: api/Default
         [HttpPost]
-        public IActionResult Post([FromBody] Media media)
+        public IActionResult Post([FromBody] MediaDto mediaDto)
         {
             try
             {
+                Media media = new MediaBuilder().Build(mediaDto);
                 _mediaServices.Post<MediaValidator>(media);
 
                 return new ObjectResult(media.ID);
@@ -89,7 +92,7 @@ namespace SVL.Web.Controllers
                 return BadRequest(ex);
             }
         }
-    
+
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]

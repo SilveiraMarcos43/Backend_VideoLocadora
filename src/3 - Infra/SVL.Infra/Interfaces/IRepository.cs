@@ -17,6 +17,8 @@ namespace SVL.Infra.Interfaces
         /// 
         void Insert(T obj);
 
+        void InsertUnitOfWork(T obj);
+
         /// <summary>
         /// Altera as informações da Entity passada como parâmetro
         /// </summary>
