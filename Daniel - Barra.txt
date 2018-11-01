@@ -44,4 +44,7 @@ Entidades:
 				MultaAplicadaEvent(IDCliente, QtdCreditos)
 				ConcederCreditoEvent(IDCliente, QtdCreditos)
 				LocacaoFinalizadaEvent(IDLocacao)
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 		
