@@ -14,6 +14,7 @@ using SVL.Infra.Interfaces;
 using SVL.Infra.Repository;
 using SVL.Infra.UnitOfWork;
 using Swashbuckle.AspNetCore.Swagger;
+using SVL.Domain.Base.Services;
 
 namespace SVL.Web
 {
@@ -49,7 +50,8 @@ namespace SVL.Web
             services.AddScoped<IRepository<Address>, BaseRepository<Address>>();
             services.AddScoped<IRepository<SVL.Domain.Base.Contact>, BaseRepository<SVL.Domain.Base.Contact>>();
             services.AddScoped<ICustomerUOW, CustomerUOW>();
-            services.AddScoped<IMediaServices<Media>>();
+            services.AddScoped<IMediaServices<Media>, BaseService<Media>>();
+            services.AddScoped<IRepository<Media>, BaseRepository<Media>>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             // Register the Swagger generator, defining 1 or more Swagger documents

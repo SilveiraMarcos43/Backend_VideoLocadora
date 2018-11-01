@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SVL.Application;
 using SVL.Domain.Base;
-using SVL.Domain.Services.Interfaces.Services;
 using SVL.Infra.Entities;
-using SVL.Infra.Interfaces;
 using SVL.Infra.UnitOfWork;
 
 namespace SVL.Web.Controllers
@@ -30,17 +28,17 @@ namespace SVL.Web.Controllers
             List<Contact> contacts = new ContactBuilder().Build(customerDto.Contacts);
 
             //Endereços
-            _uow.AddressRepository.Insert(address);
+            _uow.AddressRepository.InsertUnitOfWork(address);
             
             //Clientes
             customer.AddressId = address.ID;
-            _uow.CustomerRepository.Insert(customer);
+            _uow.CustomerRepository.InsertUnitOfWork(customer);
 
             //Contatos
             foreach (var contact in contacts)
             {
                 contact.CustomerId = customer.ID;
-                _uow.ContactRepository.Insert(contact);
+                _uow.ContactRepository.InsertUnitOfWork(contact);
             }
 
             _uow.Commit();
