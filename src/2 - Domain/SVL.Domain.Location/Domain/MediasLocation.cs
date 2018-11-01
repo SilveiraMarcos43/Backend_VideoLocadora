@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SVL.Domain.Location.Domain
 {
-    public class MediasLocation
+    public class LocationMediaDto
     {
         private int _locationId;
         private int _mediaId;

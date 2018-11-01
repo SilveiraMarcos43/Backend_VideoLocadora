@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SVL.Infra.Data;
 
 namespace SVL.Infra.Migrations
 {
     [DbContext(typeof(BaseContexto))]
-    partial class BaseContextoModelSnapshot : ModelSnapshot
+    [Migration("20181101180517_LocationStatus")]
+    partial class LocationStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

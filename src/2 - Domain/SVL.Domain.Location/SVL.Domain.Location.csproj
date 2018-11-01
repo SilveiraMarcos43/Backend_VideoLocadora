@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Interfaces\DomainEvents\" />
+    <Folder Include="Interfaces\Services\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
