@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.0.100" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
   </ItemGroup>
 
 </Project>

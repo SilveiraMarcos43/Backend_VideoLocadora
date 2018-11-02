@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SVL.Domain.Base;
 using SVL.Domain.Devolution;
@@ -5,11 +6,12 @@ using SVL.Domain.Location;
 using SVL.Infra.DomainConfig;
 using SVL.Infra.Entities;
 using SVL.Infra.Mapping;
+using SVL.Infra.Repository;
 using Media = SVL.Domain.Base.Media;
 
 namespace SVL.Infra.Data
 {
-    public class BaseContexto : DbContext
+    public class BaseContexto : DbContext, IDbContext
     {
         public BaseContexto(DbContextOptions<BaseContexto> options) : base(options)
         {
@@ -23,6 +25,11 @@ namespace SVL.Infra.Data
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Media> medias { get; set; }
         public DbSet<Wallet> credits { get; set; }
+
+        public void Rollback()
+        {
+            throw new System.NotImplementedException();
+        }
 
         /// <summary>
         /// Configuração do Contexto da Aplicação
@@ -51,6 +58,11 @@ namespace SVL.Infra.Data
 
 
 
+        }
+
+        IQueryable<T> IDbContext.Set<T>()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
