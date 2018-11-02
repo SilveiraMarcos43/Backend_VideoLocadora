@@ -1,6 +1,7 @@
 ﻿using SVL.Domain.Base;
 using SVL.Infra.Data;
 using SVL.Infra.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -57,6 +58,18 @@ namespace SVL.Infra.Repository
         public T Select(int id)
         {
             return _context.Set<T>().Find(id);
+        }
+
+        public T Select(Guid id)
+        {
+            return _context.Set<T>().Find(id);
+
+        }
+
+        public void Delete(Guid id)
+        {
+            _context.Set<T>().Remove(Select(id));
+            _context.SaveChanges();
         }
     }
 }

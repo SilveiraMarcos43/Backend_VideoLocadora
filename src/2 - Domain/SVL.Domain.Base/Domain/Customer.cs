@@ -1,4 +1,5 @@
 using SVL.Domain.Base.Domain.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,7 +16,7 @@ namespace SVL.Domain.Base
 
         private string _cpf;
         private ICollection<Contact> _Contacts;
-        private int _addressId;
+        private Guid _addressId;
         private EnumGender _gender;
 
         /// <summary>
@@ -33,6 +34,6 @@ namespace SVL.Domain.Base
         public ICollection<Contact> Contacts { get => _Contacts; set => _Contacts = value; }
 
         [ForeignKey("addressId")]
-        public int AddressId { get => _addressId; set => _addressId = value; }
+        public Guid AddressId { get => _addressId; set => _addressId = value; }
     }
 }

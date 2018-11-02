@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using SVL.Domain.Base;
+using System;
 using System.Collections.Generic;
 
 namespace SVL.Domain.Services.Interfaces.Services
@@ -10,9 +11,9 @@ namespace SVL.Domain.Services.Interfaces.Services
 
         T Put<V>(T obj) where V : AbstractValidator<T>;
 
-        void Delete(int id);
+        void Delete(Guid id);
 
-        T Get(int id);
+        T Get(Guid id);
 
         IList<T> Get();
     }

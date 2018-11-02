@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,7 +14,7 @@ namespace SVL.Domain.Base
         private string _telefone;
         private string _name;
         private string _email;
-        private int _CustomerId;
+        private Guid _CustomerId;
         private Customer _Customer;
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace SVL.Domain.Base
         /// Significa que este Contact pertence a um Cliente
         /// </summary>
         [ForeignKey("Customer")]
-        public int CustomerId { get => _CustomerId; set => _CustomerId = value; }
+        public Guid CustomerId { get => _CustomerId; set => _CustomerId = value; }
         public Customer Customer { get => _Customer; set => _Customer = value; }
 
 
