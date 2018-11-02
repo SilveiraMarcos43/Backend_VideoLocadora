@@ -56,5 +56,21 @@ namespace SVL.Domain.Base.Services
 
             validator.ValidateAndThrow(obj);
         }
+
+        public void Delete(Guid id)
+        {
+            if (id == null)
+                throw new ArgumentException("The id can't be null.");
+
+            _repository.Delete(id);
+        }
+
+        public T Get(Guid id)
+        {
+            if (id == null)
+                throw new ArgumentException("The id can't be null.");
+
+            return _repository.Select(id);
+        }
     }
 }

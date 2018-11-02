@@ -39,10 +39,23 @@ namespace SVL.Infra.Interfaces
         T Select(int id);
 
         /// <summary>
+        /// Retorna toda as informações da Entity filtrando pelo ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        T Select(Guid id);
+
+        /// <summary>
         /// Exclui as informações da Entity passada como parâmetro
         /// </summary>
         /// <param name="id"></param>
         void Delete(int id);
+
+        /// <summary>
+        /// Exclui as informações da Entity passada como parâmetro
+        /// </summary>
+        /// <param name="id"></param>
+        void Delete(Guid id);
 
     }
 }
