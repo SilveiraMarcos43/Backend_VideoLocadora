@@ -32,7 +32,7 @@ namespace SVL.Infra.UnitOfWork
 
         public void RegisterDeleted<T>(T entity) where T : class
         {
-            Context.Set<T>().Remove
+            Context.DbSet<T>().Remove(entity);
         }
 
         public void Refresh()

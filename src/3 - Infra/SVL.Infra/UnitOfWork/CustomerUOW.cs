@@ -10,13 +10,13 @@ namespace SVL.Infra.UnitOfWork
 {
     public class CustomerUOW : ICustomerUOW, IDisposable
     {
-        private BaseContexto _baseContext;
+        private BaseContext _baseContext;
         private bool _disposed = false;
         private IRepository<Address> _addressRepository = null;
         private IRepository<Customer> _customerRepository = null;
         private IRepository<Contact> _contactRepository = null;
 
-        public CustomerUOW(BaseContexto baseContext, 
+        public CustomerUOW(BaseContext baseContext, 
                            IRepository<Address> addressRepository,
                            IRepository<Customer> customerRepository,
                            IRepository<Contact> contactRepository)

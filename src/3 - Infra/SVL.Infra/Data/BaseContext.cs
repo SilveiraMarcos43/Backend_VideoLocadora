@@ -1,5 +1,6 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SVL.Domain.Base;
 using SVL.Domain.Devolution;
 using SVL.Domain.Location;
@@ -11,9 +12,14 @@ using Media = SVL.Domain.Base.Media;
 
 namespace SVL.Infra.Data
 {
-    public class BaseContexto : DbContext, IDbContext
+    public class BaseContext : DbContext, IDbContext
     {
-        public BaseContexto(DbContextOptions<BaseContexto> options) : base(options)
+        public BaseContext(DbContextOptions<BaseContext> options) : base(options)
+        {
+
+        }
+
+        public BaseContext()
         {
 
         }
@@ -26,9 +32,28 @@ namespace SVL.Infra.Data
         public DbSet<Media> medias { get; set; }
         public DbSet<Wallet> credits { get; set; }
 
+        public DbSet<T> DbSet<T>() where T : class
+        {
+            return DbSet<T>();
+        }
+
         public void Rollback()
         {
-            throw new System.NotImplementedException();
+            ChangeTracker.Entries().ToList().ForEach(x =>
+            {
+                x.State = EntityState.Detached;
+                var keys = GetEntityKey(x.Entity);
+                DbSet(x.Entity.GetType(), keys);
+            });
+        }
+
+        public object[] GetEntityKey<T>(T entity) where T : class
+        {
+            var state = Entry(entity);
+            var metadata = state.Metadata;
+            var key = metadata.FindPrimaryKey();
+            var props = key.Properties.ToArray();
+            return props.Select(x => x.GetGetter().GetClrValue(entity)).ToArray();
         }
 
         /// <summary>

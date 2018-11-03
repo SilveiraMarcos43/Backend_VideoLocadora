@@ -8,7 +8,7 @@ using SVL.Infra.Data;
 
 namespace SVL.Infra.Migrations
 {
-    [DbContext(typeof(BaseContexto))]
+    [DbContext(typeof(BaseContext))]
     [Migration("20181031210255_init")]
     partial class init
     {

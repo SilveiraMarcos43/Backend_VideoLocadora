@@ -43,7 +43,7 @@ namespace SVL.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<BaseContexto>(options =>
+            services.AddDbContext<BaseContext>(options =>
                 options.UseMySql(connection));
 
             //TODO: Estudar melhor maneira de implementar a injeção de dependencia dos Serviços 

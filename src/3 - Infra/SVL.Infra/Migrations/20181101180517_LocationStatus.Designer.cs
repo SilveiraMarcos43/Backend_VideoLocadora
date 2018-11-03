@@ -8,7 +8,7 @@ using SVL.Infra.Data;
 
 namespace SVL.Infra.Migrations
 {
-    [DbContext(typeof(BaseContexto))]
+    [DbContext(typeof(BaseContext))]
     [Migration("20181101180517_LocationStatus")]
     partial class LocationStatus
     {

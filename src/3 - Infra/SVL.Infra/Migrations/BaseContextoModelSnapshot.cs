@@ -7,7 +7,7 @@ using SVL.Infra.Data;
 
 namespace SVL.Infra.Migrations
 {
-    [DbContext(typeof(BaseContexto))]
+    [DbContext(typeof(BaseContext))]
     partial class BaseContextoModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
