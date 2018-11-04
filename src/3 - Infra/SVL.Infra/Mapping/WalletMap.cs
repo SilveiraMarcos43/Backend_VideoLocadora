@@ -8,7 +8,7 @@ namespace SVL.Infra.Mapping
     /// <summary>
     /// Implementa IEntityTypeConfiguration - Interface do Entity FrameCore do Fluent Api
     /// </summary>
-    public class CreditMap : IEntityTypeConfiguration<Wallet>
+    public class WalletMap : IEntityTypeConfiguration<Wallet>
     {
         public void Configure(EntityTypeBuilder<Wallet> builder)
         {

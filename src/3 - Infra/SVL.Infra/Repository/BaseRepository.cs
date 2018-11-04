@@ -3,6 +3,7 @@ using SVL.Infra.Data;
 using SVL.Infra.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 /// <summary>
 /// Classe que conversa c'om banco de dados

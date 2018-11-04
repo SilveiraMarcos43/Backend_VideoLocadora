@@ -30,7 +30,7 @@ namespace SVL.Infra.Data
         public DbSet<Devolution> devolutions { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Media> medias { get; set; }
-        public DbSet<Wallet> credits { get; set; }
+        public DbSet<Wallet> wallet { get; set; }
 
         public DbSet<T> DbSet<T>() where T : class
         {
@@ -67,7 +67,7 @@ namespace SVL.Infra.Data
             modelBuilder.Entity<Devolution>().ToTable("Devolution");
             modelBuilder.Entity<Media>().ToTable("Media");
             modelBuilder.Entity<Contact>().ToTable("Contact");
-            modelBuilder.Entity<Wallet>().ToTable("Credit");
+            modelBuilder.Entity<Wallet>().ToTable("Wallet");
             modelBuilder.Entity<Address>().ToTable("Address");
             modelBuilder.Entity<MediaLocation>().ToTable("MediaLocation");
 
@@ -77,7 +77,7 @@ namespace SVL.Infra.Data
             modelBuilder.ApplyConfiguration(new LocationMap());
             modelBuilder.ApplyConfiguration(new DevolutionMap());
             modelBuilder.ApplyConfiguration(new AddressMap());
-            modelBuilder.ApplyConfiguration(new CreditMap());
+            modelBuilder.ApplyConfiguration(new WalletMap());
             modelBuilder.ApplyConfiguration(new ContactMap());
             modelBuilder.ApplyConfiguration(new MediaLocationMap());
 

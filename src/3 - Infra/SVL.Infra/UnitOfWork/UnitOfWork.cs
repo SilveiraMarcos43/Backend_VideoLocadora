@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SVL.Infra.UnitOfWork
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         public UnitOfWork(IDbContext context)
         {
