@@ -43,12 +43,6 @@ namespace SVL.Web.Controllers
             }
 
             _uow.Commit();
-
-            using(var context = new BaseContext())
-            {
-
-            }
-
         }
     }
 }

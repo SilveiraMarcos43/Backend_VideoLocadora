@@ -14,15 +14,9 @@ namespace SVL.Infra.Data
 {
     public class BaseContext : DbContext, IDbContext
     {
-        public BaseContext(DbContextOptions<BaseContext> options) : base(options)
-        {
+        public BaseContext(DbContextOptions<BaseContext> options) : base(options) { }
 
-        }
-
-        public BaseContext()
-        {
-
-        }
+        public BaseContext() { }
 
         public DbSet<Address> addresses { get; set; }
         public DbSet<Customer> customers { get; set; }
@@ -43,7 +37,7 @@ namespace SVL.Infra.Data
             {
                 x.State = EntityState.Detached;
                 var keys = GetEntityKey(x.Entity);
-                DbSet(x.Entity.GetType(), keys);
+                //DbSet(x.Entity.GetType(), keys);
             });
         }
 

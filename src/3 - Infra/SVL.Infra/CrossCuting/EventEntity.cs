@@ -1,4 +1,5 @@
-﻿using SVL.Domain.Location.Events;
+﻿using MediatR;
+using SVL.Domain.Location.Events;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,11 @@ namespace SVL.Infra.CrossCuting
     public abstract class EventEntity
     {
         private List<INotification> _domainEvents;
-        public List<INotification> DomainEvents => _domainEvents;
+
+        public List<INotification> GetDomainEvents()
+        {
+            return _domainEvents;
+        }
 
         public void AddDomainEvent(INotification eventItem)
         {

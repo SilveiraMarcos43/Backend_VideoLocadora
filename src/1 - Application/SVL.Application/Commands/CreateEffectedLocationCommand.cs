@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System;
-using MediatR;
+﻿using MediatR;
 using System.Runtime.Serialization;
 
 namespace SVL.Application.Commands
