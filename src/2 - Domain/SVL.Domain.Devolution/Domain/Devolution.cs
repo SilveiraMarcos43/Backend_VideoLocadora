@@ -1,6 +1,7 @@
 ﻿using SVL.Domain.Base;
 using SVL.Domain.Devolution.Domain.Enum;
 using System;
+using SVL.Common.CrossCuting;
 
 namespace SVL.Domain.Devolution
 {

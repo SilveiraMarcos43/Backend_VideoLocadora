@@ -2,6 +2,7 @@
 using SVL.Domain.Location;
 using System;
 using Media = SVL.Domain.Base.Media;
+using SVL.Common.CrossCuting;
 
 namespace SVL.Infra.Entities
 {

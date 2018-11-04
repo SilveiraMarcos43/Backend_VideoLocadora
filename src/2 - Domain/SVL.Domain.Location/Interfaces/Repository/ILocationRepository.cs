@@ -20,7 +20,12 @@ namespace SVL.Domain.Location.Interfaces.Repository
         /// </summary>
         /// <returns></returns>
         void CancelLocationMedia(int LocationMediaId);
-        
+
+        /// <summary>
+        /// Metodo que Retorna uma locação
+        /// </summary>
+        /// <returns></returns>
+        LocationAggregate ReturnLocationMedia(int LocationId);
 
     }
 }

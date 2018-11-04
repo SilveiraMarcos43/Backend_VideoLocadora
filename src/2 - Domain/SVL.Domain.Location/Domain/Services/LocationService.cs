@@ -27,5 +27,15 @@ namespace SVL.Domain.Location.Domain.Services
         {
             throw new System.NotImplementedException();
         }
+
+        /// <summary>
+        /// Metodo que Retorna uma locação
+        /// </summary>
+        /// <returns></returns>
+        public LocationAggregate ReturnLocationMedia(int LocationId)
+        {
+            return _locationRepository.ReturnLocationMedia(LocationId);
+        }
+
     }
 }

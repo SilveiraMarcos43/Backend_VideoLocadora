@@ -14,4 +14,8 @@
     <PackageReference Include="FluentValidation" Version="8.0.100" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\6 - Common\SVL.Common\SVL.Common.csproj" />
+  </ItemGroup>
+
 </Project>

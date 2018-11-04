@@ -1,5 +1,6 @@
 ﻿using SVL.Domain.Base;
 using System;
+using SVL.Common.CrossCuting;
 
 namespace SVL.Domain.Devolution
 {

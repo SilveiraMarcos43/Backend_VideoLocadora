@@ -1,12 +1,15 @@
-﻿
+﻿using SVL.Common.CrossCuting;
 
-using SVL.Domain.Base;
-
-namespace SVL.Domain.Location
+namespace SVL.Domain.Wallet.Domain
 {
     public class Wallet : BaseEntity
     {
         private int _creditPoints;
+
+        public Wallet(int CustomerID)
+        {
+
+        }
 
         /// <summary>
         /// Id do Cliente

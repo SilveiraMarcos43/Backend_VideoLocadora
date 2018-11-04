@@ -10,4 +10,8 @@
     <ProjectReference Include="..\..\3 - Infra\SVL.Infra\SVL.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events\" />
+  </ItemGroup>
+
 </Project>

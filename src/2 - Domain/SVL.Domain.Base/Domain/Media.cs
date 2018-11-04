@@ -1,6 +1,7 @@
 ﻿using SVL.Domain.Base.Domain.Enum;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using SVL.Common.CrossCuting;
 
 namespace SVL.Domain.Base
 {

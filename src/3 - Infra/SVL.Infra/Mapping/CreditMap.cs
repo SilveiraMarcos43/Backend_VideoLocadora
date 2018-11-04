@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SVL.Domain.Devolution;
-using SVL.Domain.Location;
+using SVL.Domain.Wallet.Domain;
 
 namespace SVL.Infra.Mapping
 {

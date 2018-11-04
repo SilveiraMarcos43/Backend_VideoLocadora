@@ -34,6 +34,15 @@ namespace SVL.Infra.Repository
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// Metodo que Retorna uma locação
+        /// </summary>
+        /// <returns></returns>
+        public LocationAggregate ReturnLocationMedia(int LocationId)
+        {
+            return _baseContexto.Set<LocationAggregate>().Find(LocationId);
+        }
+
 
     }
 }
