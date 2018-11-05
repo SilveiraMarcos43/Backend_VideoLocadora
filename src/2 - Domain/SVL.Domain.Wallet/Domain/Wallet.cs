@@ -19,5 +19,6 @@ namespace SVL.Domain.Location
         public int CreditPoints { get => _creditPoints; set => _creditPoints = value; }
 
 
+
     }
 }

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SVL.Domain.Devolution\SVL.Domain.Devolution.csproj" />
     <ProjectReference Include="..\SVL.Domain.Location\SVL.Domain.Location.csproj" />
   </ItemGroup>

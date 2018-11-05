@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SVL.Application;
 using SVL.Domain.Base;
+using SVL.Infra.Data;
 using SVL.Infra.Entities;
 using SVL.Infra.UnitOfWork;
 
@@ -42,7 +43,6 @@ namespace SVL.Web.Controllers
             }
 
             _uow.Commit();
-
         }
     }
 }

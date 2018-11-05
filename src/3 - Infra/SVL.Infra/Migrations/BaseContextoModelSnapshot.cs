@@ -7,7 +7,7 @@ using SVL.Infra.Data;
 
 namespace SVL.Infra.Migrations
 {
-    [DbContext(typeof(BaseContexto))]
+    [DbContext(typeof(BaseContext))]
     partial class BaseContextoModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -140,6 +140,8 @@ namespace SVL.Infra.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
+
+                    b.Property<int>("LocationStatus");
 
                     b.Property<int>("Value")
                         .HasColumnType("int");

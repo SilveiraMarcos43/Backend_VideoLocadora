@@ -15,6 +15,9 @@ using SVL.Infra.Repository;
 using SVL.Infra.UnitOfWork;
 using Swashbuckle.AspNetCore.Swagger;
 using SVL.Domain.Base.Services;
+using SVL.Infra.Entities;
+using SVL.Domain.Services.Services;
+using SVL.Domain.Location.Interfaces.Services;
 
 namespace SVL.Web
 {
@@ -40,7 +43,7 @@ namespace SVL.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<BaseContexto>(options =>
+            services.AddDbContext<BaseContext>(options =>
                 options.UseMySql(connection));
 
             //TODO: Estudar melhor maneira de implementar a injeção de dependencia dos Serviços 
@@ -52,6 +55,8 @@ namespace SVL.Web
             services.AddScoped<ICustomerUOW, CustomerUOW>();
             services.AddScoped<IMediaServices<Media>, BaseService<Media>>();
             services.AddScoped<IRepository<Media>, BaseRepository<Media>>();
+            services.AddScoped<IMediaLocationService, MediaLocationService>();
+            services.AddScoped<IRepository<MediaLocation>, BaseRepository<MediaLocation>>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             // Register the Swagger generator, defining 1 or more Swagger documents

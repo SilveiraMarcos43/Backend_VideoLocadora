@@ -3,6 +3,7 @@ using SVL.Infra.Data;
 using SVL.Infra.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 /// <summary>
 /// Classe que conversa c'om banco de dados
@@ -14,9 +15,9 @@ namespace SVL.Infra.Repository
 {
     public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private BaseContexto _context;
+        private BaseContext _context;
 
-        public BaseRepository(BaseContexto baseContexto)
+        public BaseRepository(BaseContext baseContexto)
         {
             this._context = baseContexto;
 
