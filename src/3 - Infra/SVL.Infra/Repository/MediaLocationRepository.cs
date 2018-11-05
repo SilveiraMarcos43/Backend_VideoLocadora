@@ -36,7 +36,7 @@ namespace SVL.Infra.Repository
             _locationAggregate = _locationService.ReturnLocationMedia(media.LocationID);
 
             // Adiciona Evento de Dominio para Atualizar Creditos na Carteira
-            media.AddDomainEvent(new CreditValueOfTheCustomerPortfolioDomainEvent(media.LocationID, _locationAggregate.CustomerId, _locationAggregate.Value));
+            media.AddDomainEvent(new CreditValueOfTheCustomerPortfolioDomainEvent(_locationAggregate.CustomerId, 1));
     
         }
     }
