@@ -16,7 +16,7 @@ namespace SVL.Infra.Interfaces
         /// Remove a midia da locação
         /// </summary>
         /// <param name="mediaId"></param>
-        void RemoveMedia(int mediaId);
+        void RemoveMedia(MediaLocation media);
 
     }
 }

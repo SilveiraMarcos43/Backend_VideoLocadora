@@ -1,8 +1,8 @@
 ﻿using SVL.Domain.Location;
 using SVL.Domain.Location.Domain.Services;
+using SVL.Domain.Wallet.Event;
 using SVL.Infra.Data;
 using SVL.Infra.Entities;
-using SVL.Infra.Event;
 using SVL.Infra.Interfaces;
 
 namespace SVL.Infra.Repository
@@ -18,9 +18,10 @@ namespace SVL.Infra.Repository
             this._baseContexto = baseContexto;
         }
 
-        public void RemoveMedia(int mediaId)
+        public void RemoveMedia(MediaLocation media)
         {
-            throw new System.NotImplementedException();
+            _baseContexto.Set<MediaLocation>().Remove(media);
+            _baseContexto.SaveChanges();
         }
 
         /// <summary>

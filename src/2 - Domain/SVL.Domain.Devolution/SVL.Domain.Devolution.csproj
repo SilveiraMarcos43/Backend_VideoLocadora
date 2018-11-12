@@ -6,6 +6,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SVL.Domain.Base\SVL.Domain.Base.csproj" />
+    <ProjectReference Include="..\SVL.Domain.Location\SVL.Domain.Location.csproj" />
+    <ProjectReference Include="..\SVL.Domain.Wallet\SVL.Domain.Wallet.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\DomainEvents\" />
   </ItemGroup>
 
 </Project>

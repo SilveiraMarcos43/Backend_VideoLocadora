@@ -40,5 +40,6 @@ namespace SVL.Domain.Location
         /// Situação da locação
         /// </summary>
         public LocationStatus LocationStatus { get => _locationStatus; set => _locationStatus = value; }
+
     }
 }

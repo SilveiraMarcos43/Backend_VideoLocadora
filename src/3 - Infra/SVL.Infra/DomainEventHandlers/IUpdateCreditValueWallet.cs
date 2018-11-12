@@ -1,5 +1,5 @@
 ﻿using SVL.Common.CrossCuting;
-using SVL.Infra.Event;
+using SVL.Domain.Wallet.Event;
 
 namespace SVL.Infra.DomainEventHandlers
 {

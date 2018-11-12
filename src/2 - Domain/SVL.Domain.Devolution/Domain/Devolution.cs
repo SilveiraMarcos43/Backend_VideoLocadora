@@ -13,6 +13,19 @@ namespace SVL.Domain.Devolution
         private DevolutionStatus _devolutionStatus;
 
         /// <summary>
+        /// Metodo responsável pela criação da Devolução da Locação
+        /// </summary>
+        /// <param name="locationId"></param>
+        /// <param name="customerId"></param>
+        public Devolution(int locationId, int customerId)
+        {
+            this._locationId = locationId;
+            this._customerId = customerId;
+            this._devolutionStatus = DevolutionStatus.Aberta;
+
+        }
+
+        /// <summary>
         /// ID da Locação 
         /// </summary>
         public int LocationId { get => _locationId; set => _locationId = value; }
@@ -30,8 +43,5 @@ namespace SVL.Domain.Devolution
         /// </summary>
         public DevolutionStatus DevolutionStatus { get => _devolutionStatus; set => _devolutionStatus = value; }
 
-        private void ReturnMedia(Media media) { }
-
-        private void IsComplete() { }
     }
 }

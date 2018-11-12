@@ -29,5 +29,18 @@ namespace SVL.Infra.Repository
             await _baseContexto.SaveChangesAsync();
 
         }
+
+        /// <summary>
+        /// Debita valor da Carteira do Cliente
+        /// </summary>
+        /// <param name="CustomerId"></param>
+        /// <param name="ValueDebit"></param>
+        public async Task DebitValueWalletCustomer(int CustomerId, int ValueDebit)
+        {
+            _CustomerWallet = new Wallet(CustomerId);
+            _CustomerWallet.CreditPoints = ValueDebit;
+            await _baseContexto.SaveChangesAsync();
+
+        }
     }
 }

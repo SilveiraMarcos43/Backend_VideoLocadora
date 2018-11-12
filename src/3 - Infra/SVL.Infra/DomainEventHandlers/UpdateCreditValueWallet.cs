@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using SVL.Domain.Wallet.Event;
 using SVL.Domain.Wallet.Interfaces.Repository;
-using SVL.Infra.Event;
 
 namespace SVL.Infra.DomainEventHandlers
 {

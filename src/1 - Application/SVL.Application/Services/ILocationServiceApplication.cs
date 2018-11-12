@@ -1,19 +1,24 @@
-﻿
-namespace SVL.Domain.Location.Interfaces.Repository
+﻿using FluentValidation;
+using SVL.Domain.Location;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SVL.Application.Services
 {
-    public interface ILocationRepository
+    public interface ILocationServiceApplication
     {
         /// <summary>
-        /// Criação da locação sem Midia
+        /// Serviço criação da Locação
         /// </summary>
         /// <param name="customerId"></param>
-        void CreateLocation(LocationAggregate locationAggregate);
-
+        void Create(int customerId);
         /// <summary>
         /// Metodo que efetiva uma locação
+        /// Usamos o conceito de Fluent Validation para validações de Aplicação
         /// </summary>
         /// <returns></returns>
-        LocationAggregate EffectLocationMedia(LocationAggregate locationMedia);
+        LocationAggregate EffectLocationMedia<V>(LocationAggregate locationMedia) where V : AbstractValidator<LocationAggregate>;
 
         /// <summary>
         /// Metodo que cancela uma Locação

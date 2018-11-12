@@ -1,6 +1,6 @@
 ﻿using SVL.Common.CrossCuting;
 
-namespace SVL.Infra.Event
+namespace SVL.Domain.Wallet.Event
 {
     /// <summary>
     /// Evento CreateDebitoWalletEvent

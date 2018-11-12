@@ -12,15 +12,16 @@ namespace SVL.Domain.Location.Domain.Services
 
         }
 
-        public void Create(int customerId)
-        {
-            //TODO: Regras de Negocios
-            _locationRepository.CreateLocation(customerId);
-        }
-
         public void CancelLocationMedia(int LocationMediaId)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Create(LocationAggregate locationAggregate)
+        {
+            //TODO: Regras de Negocios
+            _locationRepository.CreateLocation(locationAggregate);
+            
         }
 
         public LocationAggregate EffectLocationMedia(LocationAggregate locationMedia)
@@ -28,14 +29,9 @@ namespace SVL.Domain.Location.Domain.Services
             throw new System.NotImplementedException();
         }
 
-        /// <summary>
-        /// Metodo que Retorna uma locação
-        /// </summary>
-        /// <returns></returns>
         public LocationAggregate ReturnLocationMedia(int LocationId)
         {
-            return _locationRepository.ReturnLocationMedia(LocationId);
+            throw new System.NotImplementedException();
         }
-
     }
 }
