@@ -1,4 +1,6 @@
 ﻿
+using FluentValidation;
+
 namespace SVL.Domain.Location.Interfaces.Repository
 {
     public interface ILocationRepository
@@ -6,7 +8,7 @@ namespace SVL.Domain.Location.Interfaces.Repository
         /// <summary>
         /// Criação da locação sem Midia
         /// </summary>
-        /// <param name="customerId"></param>
+        /// <param name="locationAggregate"></param>
         void CreateLocation(LocationAggregate locationAggregate);
 
         /// <summary>

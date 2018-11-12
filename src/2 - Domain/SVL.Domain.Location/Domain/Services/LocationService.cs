@@ -1,4 +1,7 @@
-﻿using SVL.Domain.Location.Interfaces.Repository;
+﻿using SVL.Domain.Location.Domain.Enum;
+using SVL.Domain.Location.Interfaces.Repository;
+using SVL.Domain.Location.Validators;
+using System;
 
 namespace SVL.Domain.Location.Domain.Services
 {
@@ -17,10 +20,24 @@ namespace SVL.Domain.Location.Domain.Services
             throw new System.NotImplementedException();
         }
 
-        public void Create(LocationAggregate locationAggregate)
+        public void Create(int customerId)
         {
             //TODO: Regras de Negocios
-            _locationRepository.CreateLocation(locationAggregate);
+            // Verifico se existe uma Locação no Banco de dados
+            LocationAggregate _locationAggregate = ReturnLocationMedia(customerId);
+            if (_locationAggregate.ID <= 0)
+            {
+                _locationAggregate.CustomerId = customerId;
+                _locationAggregate.Date = DateTime.Now;
+                _locationAggregate.LocationStatus = LocationStatus.Ativa;
+
+                _locationRepository.CreateLocation(_locationAggregate);
+
+            }
+            else
+            {
+                //TODO: Implementar mensagem de retorno."Existe Locação aberta para este Cliente.".
+            }            
             
         }
 

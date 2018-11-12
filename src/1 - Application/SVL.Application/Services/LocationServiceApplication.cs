@@ -23,20 +23,7 @@ namespace SVL.Application.Services
 
         public void Create(int customerId)
         {
-            // Verifico se existe uma Locação no Banco de dados
-            LocationAggregate _locationAggregate = _locationService.ReturnLocationMedia(customerId);
-            if (_locationAggregate.ID <= 0)
-            {
-                _locationAggregate.CustomerId = customerId;
-                _locationAggregate.Date = DateTime.Now;
-                _locationAggregate.LocationStatus = LocationStatus.Ativa;
-
-                _locationService.Create(_locationAggregate);
-
-            } else
-            {
-                //TODO: Implementar mensagem de retorno."Existe Locação aberta para este Cliente.".
-            }
+            _locationService.Create(customerId);
 
         }
 

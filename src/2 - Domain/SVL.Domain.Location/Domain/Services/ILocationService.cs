@@ -8,7 +8,7 @@ namespace SVL.Domain.Location.Domain.Services
         /// Serviço criação da Locação
         /// </summary>
         /// <param name="customerId"></param>
-        void Create(LocationAggregate locationAggregate);
+        void Create(int customerId);
 
         /// <summary>
         /// Metodo que efetiva uma locação

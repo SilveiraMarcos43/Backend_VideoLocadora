@@ -18,13 +18,21 @@ namespace SVL.Web.Controllers
             this._LocationServiceApplication = ILocationService;
         }
 
+        /// <summary>
+        /// Serviço de criação de Locação 
+        /// </summary>
+        /// <param name="customerId"></param>
         [HttpPost]
         [Route("{customerId}")]
         public void Create([FromRoute] int customerId)
         {
             this._LocationServiceApplication.Create(customerId);
         }
-
+        /// <summary>
+        /// Serviço Responsável em  Efetivar a Locação,
+        /// </summary>
+        /// <param name="locationAggregate"></param>
+        /// <returns></returns>
         // PUT: api/LocationAggregate/5
         [HttpPut("{id}")]
         public IActionResult Put([FromBody] LocationAggregate locationAggregate)
