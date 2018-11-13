@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="2.1 CrossCuting\**" />
+    <EmbeddedResource Remove="2.1 CrossCuting\**" />
+    <None Remove="2.1 CrossCuting\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20181030132146_IniMarcos.cs" />
     <Compile Remove="Migrations\20181030135045_juca.cs" />
     <Compile Remove="Migrations\20181030174250_ConfigurationTables.cs" />
@@ -26,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="2.1 CrossCuting\" />
+    <Folder Include="Event\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +42,7 @@
     <ProjectReference Include="..\..\2 - Domain\SVL.Domain.Location\SVL.Domain.Location.csproj" />
     <ProjectReference Include="..\..\2 - Domain\SVL.Domain.Ticheting\SVL.Domain.Ticketing.csproj" />
     <ProjectReference Include="..\..\2 - Domain\SVL.Domain.Wallet\SVL.Domain.Wallet.csproj" />
+    <ProjectReference Include="..\..\6 - Common\SVL.Common\SVL.Common.csproj" />
   </ItemGroup>
 
 </Project>

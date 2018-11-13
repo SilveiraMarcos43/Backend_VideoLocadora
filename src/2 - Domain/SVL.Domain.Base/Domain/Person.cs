@@ -1,4 +1,5 @@
 using System;
+using SVL.Common.CrossCuting;
 
 namespace SVL.Domain.Base
 {

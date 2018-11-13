@@ -2,6 +2,7 @@
 using SVL.Domain.Location.Domain.Enum;
 using System;
 using System.Collections.Generic;
+using SVL.Common.CrossCuting;
 
 /// <summary>
 /// Classe Aggregate
@@ -11,7 +12,7 @@ namespace SVL.Domain.Location
     public class LocationAggregate : BaseEntity
     {
         private DateTime _date;
-        private float _value;
+        private int _value;
         private int _customerId;
         private LocationStatus _locationStatus;
 
@@ -28,7 +29,7 @@ namespace SVL.Domain.Location
         /// <summary>
         /// Valor da Locação
         /// </summary>
-        public float Value { get => _value; set => _value = value; }
+        public int Value { get => _value; set => _value = value; }
 
         /// <summary>
         /// Cliente da Locação
@@ -39,5 +40,6 @@ namespace SVL.Domain.Location
         /// Situação da locação
         /// </summary>
         public LocationStatus LocationStatus { get => _locationStatus; set => _locationStatus = value; }
+
     }
 }

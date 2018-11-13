@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SVL.Common.CrossCuting;
 using SVL.Domain.Base;
 using System.Collections.Generic;
 

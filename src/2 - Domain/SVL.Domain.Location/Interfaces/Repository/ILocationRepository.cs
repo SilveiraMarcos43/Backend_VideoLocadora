@@ -1,4 +1,6 @@
 ﻿
+using FluentValidation;
+
 namespace SVL.Domain.Location.Interfaces.Repository
 {
     public interface ILocationRepository
@@ -6,8 +8,8 @@ namespace SVL.Domain.Location.Interfaces.Repository
         /// <summary>
         /// Criação da locação sem Midia
         /// </summary>
-        /// <param name="customerId"></param>
-        void CreateLocation(int customerId);
+        /// <param name="locationAggregate"></param>
+        void CreateLocation(LocationAggregate locationAggregate);
 
         /// <summary>
         /// Metodo que efetiva uma locação
@@ -20,7 +22,12 @@ namespace SVL.Domain.Location.Interfaces.Repository
         /// </summary>
         /// <returns></returns>
         void CancelLocationMedia(int LocationMediaId);
-        
+
+        /// <summary>
+        /// Metodo que Retorna uma locação
+        /// </summary>
+        /// <returns></returns>
+        LocationAggregate ReturnLocationMedia(int LocationId);
 
     }
 }

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using SVL.Domain.Location.Domain.Services;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using SVL.Application.Services;
+using SVL.Domain.Location;
+using SVL.Domain.Location.Validators;
 
 namespace SVL.Web.Controllers
 {
@@ -10,24 +11,47 @@ namespace SVL.Web.Controllers
     [ApiController]
     public class LocationController : ControllerBase
     {
-        private readonly ILocationService ILocationService;
+        private readonly ILocationServiceApplication _LocationServiceApplication;
 
-        public LocationController(ILocationService ILocationService)
+        public LocationController(ILocationServiceApplication ILocationService)
         {
-            this.ILocationService = ILocationService;
+            this._LocationServiceApplication = ILocationService;
         }
 
+        /// <summary>
+        /// Serviço de criação de Locação 
+        /// </summary>
+        /// <param name="customerId"></param>
         [HttpPost]
         [Route("{customerId}")]
         public void Create([FromRoute] int customerId)
         {
-            this.ILocationService.Create(customerId);
+            this._LocationServiceApplication.Create(customerId);
         }
-
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        /// <summary>
+        /// Serviço Responsável em  Efetivar a Locação,
+        /// </summary>
+        /// <param name="locationAggregate"></param>
+        /// <returns></returns>
+        // PUT: api/LocationAggregate/5
+        [HttpPut("{id}")]
+        public IActionResult Put([FromBody] LocationAggregate locationAggregate)
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                // Aplicamos Fluent Validation para validação do Objeto que o Domain irá receber
+                _LocationServiceApplication.EffectLocationMedia<LocationValidators>(locationAggregate);
+
+                return new ObjectResult(locationAggregate);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return NotFound(ex);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }

@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\2 - Domain\SVL.Domain.Devolution\SVL.Domain.Devolution.csproj" />
     <ProjectReference Include="..\..\2 - Domain\SVL.Domain.Location\SVL.Domain.Location.csproj" />
     <ProjectReference Include="..\..\3 - Infra\SVL.Infra\SVL.Infra.csproj" />
     <ProjectReference Include="..\..\1 - Application\SVL.Application\SVL.Application.csproj" />

@@ -1,4 +1,5 @@
-﻿using SVL.Domain.Base;
+﻿using SVL.Common.CrossCuting;
+using SVL.Domain.Base;
 using SVL.Infra.Data;
 using SVL.Infra.Interfaces;
 using System.Collections.Generic;

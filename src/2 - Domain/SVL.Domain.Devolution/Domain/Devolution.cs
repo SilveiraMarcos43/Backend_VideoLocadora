@@ -1,6 +1,7 @@
 ﻿using SVL.Domain.Base;
 using SVL.Domain.Devolution.Domain.Enum;
 using System;
+using SVL.Common.CrossCuting;
 
 namespace SVL.Domain.Devolution
 {
@@ -10,6 +11,19 @@ namespace SVL.Domain.Devolution
         private int _customerId;
         private Boolean _isFinished;
         private DevolutionStatus _devolutionStatus;
+
+        /// <summary>
+        /// Metodo responsável pela criação da Devolução da Locação
+        /// </summary>
+        /// <param name="locationId"></param>
+        /// <param name="customerId"></param>
+        public Devolution(int locationId, int customerId)
+        {
+            this._locationId = locationId;
+            this._customerId = customerId;
+            this._devolutionStatus = DevolutionStatus.Aberta;
+
+        }
 
         /// <summary>
         /// ID da Locação 
@@ -29,8 +43,5 @@ namespace SVL.Domain.Devolution
         /// </summary>
         public DevolutionStatus DevolutionStatus { get => _devolutionStatus; set => _devolutionStatus = value; }
 
-        private void ReturnMedia(Media media) { }
-
-        private void IsComplete() { }
     }
 }

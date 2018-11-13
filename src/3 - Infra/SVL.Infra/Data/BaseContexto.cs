@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SVL.Domain.Base;
 using SVL.Domain.Devolution;
 using SVL.Domain.Location;
+using SVL.Domain.Wallet.Domain;
 using SVL.Infra.DomainConfig;
 using SVL.Infra.Entities;
 using SVL.Infra.Mapping;

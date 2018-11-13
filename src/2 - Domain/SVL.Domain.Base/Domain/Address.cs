@@ -1,4 +1,5 @@
-﻿using SVL.Domain.Base.Domain.Enum;
+﻿using SVL.Common.CrossCuting;
+using SVL.Domain.Base.Domain.Enum;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

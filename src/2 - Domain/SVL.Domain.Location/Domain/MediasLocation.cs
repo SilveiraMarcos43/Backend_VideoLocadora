@@ -8,5 +8,6 @@ namespace SVL.Domain.Location.Domain
     {
         private int _locationId;
         private int _mediaId;
+
     }
 }

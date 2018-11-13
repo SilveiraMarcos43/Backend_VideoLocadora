@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SVL.Common.CrossCuting;
 using SVL.Domain.Services.Interfaces.Services;
 using SVL.Infra.Interfaces;
 using System;

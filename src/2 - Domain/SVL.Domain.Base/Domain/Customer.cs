@@ -2,6 +2,7 @@ using SVL.Domain.Base.Domain.Enum;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SVL.Common.CrossCuting;
 
 namespace SVL.Domain.Base
 {

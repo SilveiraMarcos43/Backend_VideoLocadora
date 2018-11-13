@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\2 - Domain\SVL.Domain.Base\SVL.Domain.Base.csproj" />
+    <ProjectReference Include="..\..\2 - Domain\SVL.Domain.Location\SVL.Domain.Location.csproj" />
   </ItemGroup>
 
 </Project>

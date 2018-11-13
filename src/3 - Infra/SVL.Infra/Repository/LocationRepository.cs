@@ -23,15 +23,24 @@ namespace SVL.Infra.Repository
         /// Implementação do metodo de criação da locação
         /// </summary>
         /// <param name="customerId"></param>
-        public void CreateLocation(int customerId)
+        public void CreateLocation(LocationAggregate locationAggregate)
         {
-            this._baseContexto.Add(new LocationAggregate(customerId));
+            this._baseContexto.Add(locationAggregate);
             this._baseContexto.SaveChanges();
         }
 
         public LocationAggregate EffectLocationMedia(Domain.Location.LocationAggregate locationMedia)
         {
             throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Metodo que Retorna uma locação
+        /// </summary>
+        /// <returns></returns>
+        public LocationAggregate ReturnLocationMedia(int LocationId)
+        {
+            return _baseContexto.Set<LocationAggregate>().Find(LocationId);
         }
 
 

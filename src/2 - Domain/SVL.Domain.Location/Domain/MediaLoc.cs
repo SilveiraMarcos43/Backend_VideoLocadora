@@ -1,4 +1,5 @@
 ﻿using SVL.Domain.Base;
+using SVL.Common.CrossCuting;
 
 namespace SVL.Domain.Location
 {
